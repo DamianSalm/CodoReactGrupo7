@@ -1,10 +1,9 @@
 import http from 'http'
-api_de_gatos = 'https://cat-fact.herokuapp.com'
 
-export const getOne = (req, res) => {
+export const getOne = async (req, res) => {
   try {
-    // const [result] = "hello world"
-    res.send("result")
+    const dato = labasededatos.query(`select * from datos where id == ${req.params.id}`)
+    res.send(`result ${dato}`)
   } catch (error){
     return res.status(500).json({message: error.message})
   }

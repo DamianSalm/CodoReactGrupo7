@@ -1,13 +1,17 @@
 import './App.css'
+import {Routes, Route, BrowserRouter } from 'react-router-dom'
+import { NavBar } from './components/NavBar.jsx'
 
 function App() {
-  
   return (
-    <>
-      <nav className="nav">
-        <img src="../img/branding/logo_light_horizontal.svg"/>
-      </nav>
-    </>
+    <BrowserRouter>
+    <NavBar/>
+      {/* <Routes>
+        <Route path='/' element={<Show/>}></Route>
+        <Route path='/new' element={<Create/>}></Route>
+        <Route path='/edit/:id' element={<Edit/>}></Route>
+      </Routes> */}
+    </BrowserRouter>
   )
 }
 
