@@ -1,10 +1,14 @@
 import { Router } from 'express';
-import { getOne } from '../controllers/main.controller.js'
+import { getAll, getOne, postOne, editOne, deleteOne } from '../controllers/main.controller.js'
 
 const router = Router();
 
-// router.get('/main', getAll);
+// rutas CRUD a las funciones del controlador
+router.get('/main', getAll);
 router.get('/main/:id', getOne);
-// router.post('/', postOne);
+router.post('/main/', postOne);
+router.put('/main/:id', editOne);
+router.delete('/main/:id', deleteOne);
 
+// EXPORT
 export default router;

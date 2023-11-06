@@ -1,7 +1,8 @@
 import express from 'express'
 import cors from 'express'
 import { PORT } from "./config.js"
-import { getOne } from './routes/mainRoutes.js'
+import mainRoutes from './routes/mainRoutes.js'
+
 
 const app = express();
 
@@ -11,10 +12,11 @@ app.use(cors({
 }))
 app.use(express.json())
 
+
 // ROUTES
 app.use(mainRoutes)
 
-// LOOP
 
+// LOOP
 app.listen(PORT)
 console.log(`servidor corriendo en el puerto ${PORT}`)

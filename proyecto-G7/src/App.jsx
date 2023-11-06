@@ -1,16 +1,21 @@
 import './App.css'
 import {Routes, Route, BrowserRouter } from 'react-router-dom'
-import { NavBar } from './components/NavBar.jsx'
+import { NavbarComp } from './components/NavbarComp.jsx'
+import { LoginComp } from './components/LoginComp.jsx'
+import { LandingPage } from './pages/LandingPage.jsx'
+import { ShopPage } from './pages/ShopPage.jsx'
+import { ContactPage } from './pages/ContactPage.jsx'
 
 function App() {
   return (
     <BrowserRouter>
-    <NavBar/>
-      {/* <Routes>
-        <Route path='/' element={<Show/>}></Route>
-        <Route path='/new' element={<Create/>}></Route>
-        <Route path='/edit/:id' element={<Edit/>}></Route>
-      </Routes> */}
+    <NavbarComp/>
+      {<Routes>
+        <Route path='/' element={<LandingPage/>}></Route>
+        <Route path='/shop' element={<ShopPage/>}></Route>
+        <Route path='/contacto' element={<ContactPage/>}></Route>
+        <Route path='/login' element={<LoginComp/>}></Route>
+      </Routes>}
     </BrowserRouter>
   )
 }
