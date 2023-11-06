@@ -5,13 +5,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5em;
-    padding-left: 3em;
-    padding-right: 3em;
+    font-family: "Roboto";
 }
 .logo{
     width: 20vw;
 }
-a{
+a:link, a:visited, a:active {
+    text-decoration: none;
     color:white;
 }
 /* color del logo de funko #ff4848       */
