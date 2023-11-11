@@ -1,0 +1,23 @@
+/* color del logo de funko #ff4848       */
+.nav{
+    background-color: #30343f;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+Link{ /* no funca :( */
+    color: azure;
+    text-decoration: none;
+}
+
+.nav .ul{
+    /***** Section ODIO CSS *****/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    /***** End Section *****/
+}
+
