@@ -1,13 +1,14 @@
-import { llamarGetAll } from "../api/apiPropia";
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
+import Banner from '../components/bannerComponent/Banner';
+import Collection from '../components/CollectionComponent/Collections';
 
-export const LandingPage = () => {
+export const HomePage = () => {
 
   return(
 
     <>
-      <h1> Landing Page </h1>
-      {`${llamarGetAll()}`}
+      <Banner/>
+      <Collection/>
     </>
   )
 }
