@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
@@ -6,20 +7,22 @@ const Footer = () => {
             <nav className="navbar container">
                 <ul className="navbar__item">
                     <li className="navbar__item">
-                        <a className="navbar__link" href="./pages/shop/shop.html">SHOP</a>
+                        <Link to='/shop' className="navbar__link" >SHOP</Link>
                     </li>
                     <li className="navbar__item">
-                        <a className="navbar__link" href="./pages/register.html">REGISTRARSE</a>
+                        <Link to='/register' className="navbar__link" >REGISTRARSE</Link>
                     </li>
                     <li className="navbar__item">
-                        <a className="navbar__link" href="./pages/admin/login.html">LOGIN</a>
+                        <Link to='/login' className="navbar__link" >LOGIN</Link>
                     </li>
                     <li className="navbar__item">
-                        <a className="navbar__link" href="./pages/contact.html">CONTACTO</a>
+                        <Link to='/contact' className="navbar__link" >CONTACTO</Link>
                     </li>
                 </ul>
                 <picture>
-                    <img src={"../images/branding/isotype.svg"} alt="Isotipo de la marca Funkoshop"/>
+                    <Link to='/' >
+                        <img src={"../images/branding/isotype.svg"} alt="Isotipo de la marca Funkoshop"/>
+                    </Link>
                 </picture>
             </nav>
             <p className="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>

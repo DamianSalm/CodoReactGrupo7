@@ -1,5 +1,5 @@
 
-export const ContactPage = () => {
+const ContactPage = () => {
 
   return(
     <>
@@ -7,3 +7,5 @@ export const ContactPage = () => {
     </>
   )
 }
+
+export default ContactPage

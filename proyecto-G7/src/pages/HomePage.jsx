@@ -2,7 +2,7 @@
 import Banner from '../components/bannerComponent/Banner';
 import Collection from '../components/CollectionComponent/Collections';
 
-export const HomePage = () => {
+const HomePage = () => {
 
   return(
 
@@ -11,4 +11,6 @@ export const HomePage = () => {
       <Collection/>
     </>
   )
-}
+};
+
+export default HomePage;

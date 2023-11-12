@@ -1,28 +1,29 @@
+import { Link } from 'react-router-dom'
 import './Header.css'
 
-function Header () {
+const Header = () => {
     return (
         <header className="page-header">
             <nav className="navbar container">
                 <picture className="nabvar__logo">
-                    <a href="">
+                    <Link to='/'>
                         <img src={"/images/branding/logo_light_horizontal.svg"} alt="Isologotipo de la Marca Funkoshop" />
-                    </a>
+                    </Link>
                 </picture>
                 <ul className="navbar__menu">
                     <li className="navbar__item">
-                        <a href="" className="navbar__link">Shop</a>
+                        <Link to='/shop' className="navbar__link">Shop</Link>
                     </li>
                     <li className="navbar__item">
-                        <a href="" className="navbar__link">contacto</a>
+                        <Link to='contact' className="navbar__link">contacto</Link>
                     </li>
                     <li className="navbar__item">
-                        <a href="" className="navbar__link">login</a>
+                        <Link to='' className="navbar__link">login</Link>
                     </li>
                     <li className="navbar__item">
-                        <a href="" className="navbar__cart">
+                        <Link to='' className="navbar__cart">
                             <img src={"/images/icons/cart-icon.svg"} alt="icono de carrito" />
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </nav>
