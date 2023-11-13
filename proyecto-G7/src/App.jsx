@@ -1,21 +1,26 @@
-import './App.css'
-import {Routes, Route, BrowserRouter } from 'react-router-dom'
-import { NavbarComp } from './components/NavbarComp.jsx'
-import { LoginComp } from './components/LoginComp.jsx'
-import { LandingPage } from './pages/LandingPage.jsx'
-import { ShopPage } from './pages/ShopPage.jsx'
-import { ContactPage } from './pages/ContactPage.jsx'
+import './App.css';
+import {Routes, Route, BrowserRouter } from 'react-router-dom';
+import  Header  from "./components/partials/HeaderComponent/Header";
+import  Footer  from "./components/partials/FooterComponent/Footer";
+import  HomePage   from "./pages/HomePage";
+import  AdminPage  from './pages/AdminPage';
+import  ContactPage  from './pages/ContactPage';
+import  ShopPage   from './pages/ShopPage';
+
+
 
 function App() {
   return (
     <BrowserRouter>
-    <NavbarComp/>
-      {<Routes>
-        <Route path='/' element={<LandingPage/>}></Route>
-        <Route path='/shop' element={<ShopPage/>}></Route>
-        <Route path='/contacto' element={<ContactPage/>}></Route>
-        <Route path='/login' element={<LoginComp/>}></Route>
-      </Routes>}
+      <Header/>
+      <Routes>
+        <Route path='/' element= {<HomePage/>} />
+        <Route path='/contact' element= {<ContactPage/>} />
+        <Route path='/admin' element= {<AdminPage/>} />
+        <Route path='/shop' element= {<ShopPage/>} />
+      </Routes>
+
+      <Footer/>
     </BrowserRouter>
   )
 }

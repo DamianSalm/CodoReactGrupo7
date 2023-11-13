@@ -1,7 +1,4 @@
-
-
-
-export const ShopPage = () => {
+const ShopPage = () => {
 
   return(
     <>
@@ -9,3 +6,5 @@ export const ShopPage = () => {
     </>
   )
 }
+
+export default ShopPage;

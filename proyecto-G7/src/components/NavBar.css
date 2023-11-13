@@ -1,0 +1,17 @@
+.nav{
+    background-color: #30343f;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em;
+    font-family: "Roboto";
+}
+.logo{
+    width: 20vw;
+}
+a:link, a:visited, a:active {
+    text-decoration: none;
+    color:white;
+}
+/* color del logo de funko #ff4848       */

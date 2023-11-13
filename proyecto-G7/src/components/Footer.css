@@ -1,0 +1,9 @@
+.footer{
+    background-color: #30343f;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3em;
+    font-family: "Roboto";
+}
