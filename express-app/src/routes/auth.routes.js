@@ -1,11 +1,13 @@
 import { Router } from "express";
 import { register, login, logout, profile } from '../controllers/auth.controller.js'
 import { tokenRequired } from '../middlewares/validateToken.js'
+import { validateSchema } from "../middlewares/validateFields.js";
+import { registerUserSchema, loginSchema } from '../schemas/auth.schema.js'
 
 const router = Router();
 
-router.post("/register", register);
-router.post("/login", login);
+router.post("/register", validateSchema(registerUserSchema), register);
+router.post("/login", validateSchema(loginSchema), login);
 router.post("/logout", logout);
 router.get("/profile", tokenRequired, profile);
 

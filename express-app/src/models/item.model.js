@@ -27,7 +27,7 @@ const itemSchema = new mongoose.Schema({
   category: {
     type: String,
   },
-  licente: {
+  licence: {
     type: String,
   },
   price: {
