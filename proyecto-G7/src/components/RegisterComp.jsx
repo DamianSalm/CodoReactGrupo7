@@ -1,63 +1,69 @@
-import { llamarRegisterUser } from "../api/apiCalls.js";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../context/AuthContext";
 
 const RegisterComp = () => {
-  //useState
-  const [name, setName] = useState("");
-  const [mail, setMail] = useState("");
-  const [pass, setPass] = useState("");
-  //useNav
+  //useForm
+  const { register, handleSubmit, formState: { errors } }= useForm();
+  const { isAuth, signup, errors: registerErrors } = useAuth();
+
+  //useEffect - useNav
   const navigate = useNavigate();
+  useEffect( () => {
+    if (isAuth) navigate('/admin')
+  }, [isAuth])
 
-  //function to register a user
-  const create = async (e) => {
-    e.preventDefault();
-    const data = {
-      username: name,
-      email: mail,
-      password: pass,
-    };
-    await llamarRegisterUser(data);
-    navigate("/");
-  };
-
-  //useEffect
-  // useEffect(() => {
-  //   //nothing yet
-  // }, []);
+  //Function to handle the submit
+  const onSubmit = handleSubmit((values) => {
+    signup(values);
+  });
 
   return (
     <>
       <h1> Register a new user here </h1>
-      <form onSubmit={create}>
+      {
+        registerErrors.map((error, i) => (
+        <div key={i}>
+          {error}
+        </div>
+          ))
+      }
+      <form onSubmit={onSubmit}>
         <label className="form-label">Nombre: </label>
         <input
           type="text"
-          className="form-control"
-          onChange={(e) => setName(e.target.value)}
-          id="name"
           placeholder="Nombre"
-          defaultValue={name}
+          {...register("username", { required: true })}
         />
+        {errors.username && (
+          <p>Username is required</p>
+        )}
+
         <label>Email: </label>
         <input
-          id="mail"
           type="email"
           placeholder="Email"
-          onChange={(e) => setMail(e.target.value)}
-          defaultValue={mail}
+          {...register("email", { required: true })}
         />
+        {errors.email && (
+          <p>email is required</p>
+        )}
+
         <label>Password: </label>
         <input
-          id="pass"
           type="password"
           placeholder="Password"
-          onChange={(e) => setPass(e.target.value)}
-          defaultValue={pass}
+          {...register("password", { required: true })}
         />
-        <button type="submit">Submit</button>
+        {errors.password && (
+          <p>Password is required</p>
+        )}
+
+        <button type="submit">Register</button>
       </form>
+      <br />
+      <p>Ya tienes cuenta? <Link to="/login">Log in!</Link></p>
     </>
   );
 };

@@ -15,13 +15,16 @@ const Header = () => {
                         <Link to='/shop' className="navbar__link">Shop</Link>
                     </li>
                     <li className="navbar__item">
-                        <Link to='contact' className="navbar__link">contacto</Link>
+                        <Link to='/contact' className="navbar__link">contacto</Link>
                     </li>
                     <li className="navbar__item">
-                        <Link to='' className="navbar__link">login</Link>
+                        <Link to='/login' className="navbar__link">login</Link>
                     </li>
                     <li className="navbar__item">
-                        <Link to='' className="navbar__cart">
+                        <Link to='/logout' className="navbar__link">logout</Link>
+                    </li>
+                    <li className="navbar__item">
+                        <Link to='/cart' className="navbar__cart">
                             <img src={"/images/icons/cart-icon.svg"} alt="icono de carrito" />
                         </Link>
                     </li>
