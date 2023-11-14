@@ -1,15 +1,24 @@
-import './App.css'
-import {Routes, Route, BrowserRouter } from 'react-router-dom'
-import { NavbarComp } from './components/NavbarComp.jsx'
-import { LoginComp } from './components/LoginComp.jsx'
-import { LandingPage } from './pages/LandingPage.jsx'
-import { ShopPage } from './pages/ShopPage.jsx'
-import { ContactPage } from './pages/ContactPage.jsx'
-import { ListaProducto } from './components/ListaProducto.jsx'
-import { Footer } from './components/Footer.jsx'
+//Componente principal de app //El entrypoint es main.jsx
+//imports
+import "./App.css"; //estilos generales
+import { Routes, Route, BrowserRouter } from "react-router-dom"; //componentes de react-router-dom para enrutar la app
+import Header from "./components/partials/HeaderComponent/Header";
+import Footer from "./components/partials/FooterComponent/Footer";
+import HomePage from "./pages/HomePage";
+import AdminPage from "./pages/AdminPage";
+import ContactPage from "./pages/ContactPage";
+import ShopPage from "./pages/ShopPage";
+import RegisterComp from "./components/RegisterComp";
+import LoginComp from "./components/LoginComp";
+import LogoutComp from "./components/LogoutComp";
+import { AuthProvider } from "./context/AuthContext"; //contexto para usuarios autorizados/no autorizados
+import { ItemProvider } from "./context/ItemContext"; //contexto para estados y efectos generales de items
+import ProtectedRoute from "./context/ProtectedRoute"; //componente protector de rutas // accede al estado del authcontext para validar el estado de validación de un usuario
 
+//componente principal de la app
 function App() {
   return (
+<<<<<<< HEAD
     <BrowserRouter className="principal">
       <NavbarComp/>
       {/* <Routes>
@@ -19,6 +28,30 @@ function App() {
       </Routes> */}
     </BrowserRouter>
   )
+=======
+    <AuthProvider>
+      <ItemProvider>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+              {/* PUBLIC ROUTES */}
+              <Route path="/" element={<HomePage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/register" element={<RegisterComp />} />
+              <Route path="/login" element={<LoginComp />} />
+              {/* AUTH ROUTES */}
+            <Route element={<ProtectedRoute />} >
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/logout" element={<LogoutComp />} />
+            </Route>
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </ItemProvider>
+    </AuthProvider>
+  );
+>>>>>>> express
 }
 
-export default App
+export default App;

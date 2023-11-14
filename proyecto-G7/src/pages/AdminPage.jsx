@@ -1,9 +1,8 @@
+import LoginComp from "../components/LoginComp";
+import RegisterComp from "../components/RegisterComp";
 
-export const AdminPage = () => {
-  
-  return(
-    <>
-      <h1> AdminPage </h1>
-    </>
-  )
-}
+const AdminPage = () => {
+  return <></>;
+};
+
+export default AdminPage;
