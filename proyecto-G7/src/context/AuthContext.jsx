@@ -6,6 +6,7 @@ import { createContext, useState, useContext, useEffect } from "react"; //import
 import { //llamados a la api (realizan peticiones http a cualquier servidor)
   llamarRegisterUser,
   llamarLoginUser,
+  llamarLogout,
   llamarVerifyToken,
 } from "../api/authCalls.js";
 import Cookies from "js-cookie"; //acceso a las cookies del cliente
@@ -39,8 +40,6 @@ export const AuthProvider = ({ children }) => {
   const signup = async (data) => {
     try {
       const res = await llamarRegisterUser(data);
-      setUser(res.data);
-      setIsAuth(true);
     } catch (err) {
       if (Array.isArray(err.response.data)) return setErrors(err.response.data);
       console.log(err);
@@ -58,6 +57,16 @@ export const AuthProvider = ({ children }) => {
       setErrors([err.response.data]);
     }
   };
+  const logout = async () => {
+    try {
+      const res = await llamarLogout();
+      setIsAuth(false)
+      setUser(null)
+    }catch (err){
+      console.log("Hey, desde el context")
+      console.log(err)
+    }
+  }
 
   //este efecto dilata 3 segundos la actualizacion de estados de errores al cargar componentes
   useEffect(() => {
@@ -75,8 +84,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const verifyToken = async () => {
       const cookies = Cookies.get();
+      console.log(cookies)
 
       if (!cookies.token) {
+        console.log("Hey, no hay cookie!");
         setIsAuth(false);
         setLoading(false);
         return setUser(null);
@@ -84,6 +95,7 @@ export const AuthProvider = ({ children }) => {
       try {
         const res = await llamarVerifyToken();
         if (!res.data) {
+          console.log("Hey, el llamado vino vacio!");
           setIsAuth(false);
           setLoading(false);
           return;
@@ -93,6 +105,7 @@ export const AuthProvider = ({ children }) => {
         setUser(res.data);
         setLoading(false);
       } catch (err) {
+        console.log("Hey!, falló el llamado");
         console.log(err);
         setIsAuth(false);
         setUser(null);
@@ -109,6 +122,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         signup,
         signin,
+        logout,
         loading,
         user,
         isAuth,

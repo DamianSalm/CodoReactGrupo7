@@ -12,25 +12,14 @@ import RegisterComp from "./components/RegisterComp";
 import LoginComp from "./components/LoginComp";
 import LogoutComp from "./components/LogoutComp";
 import { AuthProvider } from "./context/AuthContext"; //contexto para usuarios autorizados/no autorizados
-import { ItemProvider } from "./context/ItemContext"; //contexto para estados y efectos generales de items
+import { ItemsProvider } from "./context/ItemsContext"; //contexto para estados y efectos generales de items
 import ProtectedRoute from "./context/ProtectedRoute"; //componente protector de rutas // accede al estado del authcontext para validar el estado de validación de un usuario
 
 //componente principal de la app
 function App() {
   return (
-<<<<<<< HEAD
-    <BrowserRouter className="principal">
-      <NavbarComp/>
-      {/* <Routes>
-        <Route path='/' element={<Show/>}></Route>
-        <Route path='/new' element={<Create/>}></Route>
-        <Route path='/edit/:id' element={<Edit/>}></Route>
-      </Routes> */}
-    </BrowserRouter>
-  )
-=======
     <AuthProvider>
-      <ItemProvider>
+      {/* <ItemsProvider> */}
         <BrowserRouter>
           <Header />
           <Routes>
@@ -48,10 +37,9 @@ function App() {
           </Routes>
           <Footer />
         </BrowserRouter>
-      </ItemProvider>
+      {/* </ItemsProvider> */}
     </AuthProvider>
   );
->>>>>>> express
 }
 
 export default App;
