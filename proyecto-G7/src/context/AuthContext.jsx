@@ -1,30 +1,44 @@
-import { createContext, useState, useContext, useEffect } from "react";
-import {
+//contexto que ofrece acceso a variables, estados, funciones y efectos generales de autorización de usuarios
+//más sobre contexts en: https://react.dev/reference/react/useContext
+
+//imports
+import { createContext, useState, useContext, useEffect } from "react"; //imports de react
+import { //llamados a la api (realizan peticiones http a cualquier servidor)
   llamarRegisterUser,
   llamarLoginUser,
   llamarVerifyToken,
 } from "../api/authCalls.js";
-import Cookies from "js-cookie";
+import Cookies from "js-cookie"; //acceso a las cookies del cliente
 
+//creamos un contexto
 export const AuthContext = createContext();
 
-export const useAuth = () => {
+//luego lo ponemos en uso. Esto permite a otros componentes, acceder al contexto provisto.
+export const useAuth = () => { 
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth debería usarse dentro de context provider");
+  if (!context) { //error si falla, si no hay contexto
+    throw new Error("useAuth debería usarse dentro del context provider");
   }
   return context;
 };
 
+//AuthProvider contendrá 'children' (otros componentes) que podrán acceder al contexto de este, mediante el uso de useAuth().
+//Cuando se renderice, este componente otorgará a sus hijos acceso a cualquier valor que se le pase como parametro.
+//al retornar, devolvemos un componente con nuestras funciones y estados en un parametro
+//así: value={{ func1, func1, useState1, useState2, etc.. }}
+//los efectos se activarán solos en cada hijo
+//children son cualquier otro componente que se encuentre dentro de este. ver app.jsx
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [isAuth, setIsAuth] = useState(false);
-  const [errors, setErrors] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null); //estado de usuario
+  const [isAuth, setIsAuth] = useState(false); //estado de autorizacion de usuario
+  const [errors, setErrors] = useState([]); //estado de errores
+  const [loading, setLoading] = useState(true); //estado para saber si esta procesando una autorizacion
 
-  const signup = async (values) => {
+  //signup & signin. Estas funciones llaman a la api declarada en el backend para que se hagan cargo de registrar comprobar datos de usuario.
+  //Luego actualiza los estados user, isAuth y errors
+  const signup = async (data) => {
     try {
-      const res = await llamarRegisterUser(values);
+      const res = await llamarRegisterUser(data);
       setUser(res.data);
       setIsAuth(true);
     } catch (err) {
@@ -33,9 +47,9 @@ export const AuthProvider = ({ children }) => {
       setErrors([err.response.data]);
     }
   };
-  const signin = async (user) => {
+  const signin = async (data) => {
     try {
-      const res = await llamarLoginUser(user);
+      const res = await llamarLoginUser(data);
       setIsAuth(true);
       setUser(res.data);
     } catch (err) {
@@ -45,6 +59,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  //este efecto dilata 3 segundos la actualizacion de estados de errores al cargar componentes
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
@@ -54,36 +69,41 @@ export const AuthProvider = ({ children }) => {
     }
   }, [errors]);
 
+  //este efecto verifica un cliente contenga una cookie con un token que fue generado en el backend al loggearse dicho usuario.
+  //si existe, comprueba su veracidad, si pasa la prueba settea el estado isAuth a true y carga los datos del usuario en el estado user.
+  //si el servidor no devuelve los datos requeridos, tampoco le dará pase.
   useEffect(() => {
     const verifyToken = async () => {
       const cookies = Cookies.get();
 
       if (!cookies.token) {
         setIsAuth(false);
-        setLoading(false)
+        setLoading(false);
         return setUser(null);
       }
-        try {
-          const res = await llamarVerifyToken();
-          if (!res.data) {
-            setIsAuth(false);
-            setLoading(false);
-            return;
-          }
-
-          setIsAuth(true);
-          setUser(res.data);
-          setLoading(false);
-        } catch (err) {
-          console.log(err);
+      try {
+        const res = await llamarVerifyToken();
+        if (!res.data) {
           setIsAuth(false);
-          setUser(null);
           setLoading(false);
+          return;
         }
+
+        setIsAuth(true);
+        setUser(res.data);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setIsAuth(false);
+        setUser(null);
+        setLoading(false);
       }
+    };
     verifyToken();
   }, []);
 
+  //al retornar, devolvemos un componente con nuestras funciones y estados en un parametro
+  //así: value={{ func1, func1, useState1, useState2, etc.. }}
   return (
     <AuthContext.Provider
       value={{
