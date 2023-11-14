@@ -10,8 +10,8 @@ import { Footer } from './components/Footer.jsx'
 
 function App() {
   return (
-    <BrowserRouter>
-    <NavBar/>
+    <BrowserRouter className="principal">
+      <NavbarComp/>
       {/* <Routes>
         <Route path='/' element={<Show/>}></Route>
         <Route path='/new' element={<Create/>}></Route>

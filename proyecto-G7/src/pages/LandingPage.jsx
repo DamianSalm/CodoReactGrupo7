@@ -3,6 +3,12 @@ import { useState, useEffect } from "react";
 
 export const LandingPage = () => {
 
+  
+
+  useEffect(()=> {
+    llamarGetAll()   
+  })
+
   return(
 
     <>
