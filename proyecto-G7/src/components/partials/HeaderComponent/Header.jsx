@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../../context/AuthContext'
 import './Header.css'
 
 const Header = () => {
+    const { isAuth } = useAuth()
+
     return (
         <header className="page-header">
             <nav className="navbar container">
@@ -18,10 +21,7 @@ const Header = () => {
                         <Link to='/contact' className="navbar__link">contacto</Link>
                     </li>
                     <li className="navbar__item">
-                        <Link to='/login' className="navbar__link">login</Link>
-                    </li>
-                    <li className="navbar__item">
-                        <Link to='/logout' className="navbar__link">logout</Link>
+                        {isAuth?<Link to='/logout' className="navbar__link">logout</Link>:<Link to='/login' className="navbar__link">login</Link>}
                     </li>
                     <li className="navbar__item">
                         <Link to='/cart' className="navbar__cart">

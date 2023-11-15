@@ -12,15 +12,15 @@ import { //llamados a la api (realizan peticiones http a cualquier servidor)
 import Cookies from "js-cookie"; //acceso a las cookies del cliente
 
 //creamos un contexto
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
 //luego lo ponemos en uso. Esto permite a otros componentes, acceder al contexto provisto.
 export const useAuth = () => { 
-  const context = useContext(AuthContext);
-  if (!context) { //error si falla, si no hay contexto
-    throw new Error("useAuth debería usarse dentro del context provider");
+  const authContext = useContext(AuthContext);
+  if (!authContext) { //error si falla, si no hay contexto
+    throw new Error("useAuth debería usarse dentro del AuthContext.Provider");
   }
-  return context;
+  return authContext;
 };
 
 //AuthProvider contendrá 'children' (otros componentes) que podrán acceder al contexto de este, mediante el uso de useAuth().
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data);
     } catch (err) {
       console.log(err);
-      if (Array.isArray(err.response.data)) return setErrors(err.response.data);
+      if (Array.isArray(err.response.data)) return errors.append(err.response.data);
       setErrors([err.response.data]);
     }
   };
@@ -84,10 +84,8 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const verifyToken = async () => {
       const cookies = Cookies.get();
-      console.log(cookies)
 
       if (!cookies.token) {
-        console.log("Hey, no hay cookie!");
         setIsAuth(false);
         setLoading(false);
         return setUser(null);
@@ -95,7 +93,6 @@ export const AuthProvider = ({ children }) => {
       try {
         const res = await llamarVerifyToken();
         if (!res.data) {
-          console.log("Hey, el llamado vino vacio!");
           setIsAuth(false);
           setLoading(false);
           return;
@@ -105,8 +102,6 @@ export const AuthProvider = ({ children }) => {
         setUser(res.data);
         setLoading(false);
       } catch (err) {
-        console.log("Hey!, falló el llamado");
-        console.log(err);
         setIsAuth(false);
         setUser(null);
         setLoading(false);

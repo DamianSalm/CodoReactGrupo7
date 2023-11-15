@@ -7,9 +7,9 @@ import { createItemSchema, updateItemSchema } from "../schemas/item.schema.js";
 const router = Router();
 
 router.get('/', getAll)
-router.get('/item/:id', getOne)
-router.post('/item', tokenRequired, validateSchema(createItemSchema), postOne)
-router.put('/item/:id', tokenRequired, validateSchema(updateItemSchema), putOne)
-router.delete('/item/:id', tokenRequired, deleteOne)
+router.get('/:id', getOne)
+router.post('/', tokenRequired, validateSchema(createItemSchema), postOne)
+router.put('/:id', tokenRequired, validateSchema(updateItemSchema), putOne)
+router.delete('/:id', tokenRequired, deleteOne)
 
 export default router;

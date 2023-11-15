@@ -13,11 +13,12 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api", authRoutes);
-app.use("/api", itemRoutes);
+app.use("/api/items", itemRoutes);
 
 export default app;

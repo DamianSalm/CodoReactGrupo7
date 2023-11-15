@@ -1,4 +1,5 @@
 export const validateSchema = (schema) => (req, res, next) => {
+  console.log("validando esquema");
   try {
     schema.parse(req.body);
     next();

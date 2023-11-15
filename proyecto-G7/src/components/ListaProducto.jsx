@@ -1,13 +1,30 @@
 import "./ListaProducto.css"
+import { useItems } from '../context/ItemsContext'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
-export const ListaProducto = () => {
-  return (
+const ListaProducto = () => {
+    const { items, getAllItems } = useItems()
+
+useEffect(()=>{
+    const fun = async () => {
+        await getAllItems()
+    }
+    fun()
+    if (items.lenth = 0) {return "Aún no hay items."}
+},[])
+
+  return (<>
+  
     <div className="lista-producto">
         <div className="title">
             <h1>LISTADO DE PRODUCTOS</h1>
             <div className="agregar">
-                <h2>AGREGAR</h2>
-                <i class="fa-solid fa-plus"></i>
+                {
+                    <Link className="fa-solid fa-plus" to="/create">Agregar</Link>
+                
+                }
+                <i className="fa-solid fa-plus">asd</i>
             </div>
         </div>
         <table className="table table-light">
@@ -19,19 +36,23 @@ export const ListaProducto = () => {
                     <th>Categoría</th>
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
+                    <th>img</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <th scope="row">EL ID o LA ID o LE ID?</th>
-                    <td>EL CODIGO</td>
-                    <td>EL NOMBRE</td>
-                    <td>LA CATEGORIA</td>
+                {items.map((item)=> <tr key={item._id}>
+                <th scope="row">{item._id}</th>
+                    <td>{item.sku}</td>
+                    <td>{item.name}</td>
+                    <td>{item.category}</td>
                     <td><i className="fa-solid fa-pencil"></i></td>
                     <td><i className="fa-solid fa-trash"></i></td>
-                </tr>
+                    <td><img src={item.img_front} alt="img_front" /></td>
+                </tr>)}
             </tbody>
         </table>
-    </div>
+    </div></>
   )
 }
+
+export default ListaProducto
