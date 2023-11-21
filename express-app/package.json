@@ -1,25 +1,26 @@
 {
   "name": "express-app",
   "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
+  "main": "app.js",
   "scripts": {
-    "dev": "node --watch ./src/index.js",
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "debug": "^4.3.4",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.2.0",
-    "mongoose": "^8.0.0",
+    "http-errors": "^2.0.0",
     "morgan": "^1.10.0",
-    "zod": "^3.22.4"
+    "mysql2": "^3.6.3"
   }
 }
