@@ -1,8 +1,8 @@
-const connection = require ('../config/database');
+const { conn } = require ('../config/database');
 
 module.exports = {
 	getAllCategories: (call) => {
 		const query = 'SELECT * FROM category';
-		connection.query(query, call);
+		conn.query(query, call);
 	}
 };

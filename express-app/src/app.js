@@ -1,12 +1,15 @@
-const express = require('express');
+require ('dotenv').config()
 const Licenses = require ('./routes/licenses.router');
 const Categories = require('./routes/categories.router');
+const Products = require('./routes/Products.router');
+const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 
 app.use(Licenses);
 app.use(Categories);
+app.use(Products);
 
 // Cerrar conexion a MySQL al cerrar la aplicacion
 /*
