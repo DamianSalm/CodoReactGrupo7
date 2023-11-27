@@ -1,6 +1,8 @@
 const express = require ('express');
-const { getLicenses } = require ('../controllers/licence.controller');
+const { getAll, getOne } = require ('../controllers/licence.controller');
 const router = express.Router();
-router.get ('/licenses', getLicenses);
+
+router.get ('/licenses', getAll);
+router.get ('/licence/:id_licence',getOne)
 
 module.exports = router;

@@ -1,14 +1,10 @@
-const CategoryModel = require ('../models/Categories.model');
+const categoriesModel = require ('../models/Categories.model');
+
+const getAll = async (req, res) => {
+	const categories = await categoriesModel.getAll();
+	res.send(categories);
+};
 
 module.exports = {
-	getCategories: (req, res) => {
-		CategoryModel.getAllCategories((err, results) => {
-			if (err) {
-				console.log(`Error al obtener Categorias: ${err}`)
-		  	    res.status(500).send('Error interno en el servidor')
-		  	} else {
-		  		res.json(results);
-		  	}
-		});
-	}
+	getAll
 };

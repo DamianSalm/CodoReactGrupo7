@@ -1,15 +1,17 @@
-const { getAllProducts } = require ('../models/Products.model');
+const productsModel = require ('../models/Products.model');
+
+const getAll = async (req, res) => {
+	const products = await productsModel.getAll();
+	res.send(products);
+};
+
+const getOne = async (req, res) => {
+	const idProducts = req.params.id_product;
+	const oneProduct = await productsModel.getOne(idProducts);
+	res.send(oneProduct);
+};
 
 module.exports = {
-	getProducts: (req, res) => {
-		getAllProducts((err, results) => {
-			if (err) {
-				console.log(`Error al obtener productos: ${err}`);
-				res.status(500).send('Error interno en el servidor');
-			} else {
-				res.json(results);
-			}
-				
-		});
-	}
+	getAll,
+	getOne
 };

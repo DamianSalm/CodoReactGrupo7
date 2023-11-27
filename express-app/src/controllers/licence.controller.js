@@ -1,14 +1,19 @@
-const licenceModel = require ('../models/licenceModel');
+const licenceModel  = require ('../models/licenceModel');
+
+const getAll = async (req, res) => {
+	const licenses = await licenceModel.getAll();
+	res.send(licenses);
+};
+
+const getOne = async (req, res) => {
+	const idLicence = req.params.id_licence;
+	const oneLicence = await licenceModel.getOne(idLicence);
+	res.send(oneLicence);
+};
+
+
 
 module.exports = {
-  getLicenses: (req, res) => {
-    licenceModel.getAllLicences((err, results)=>{
-      if (err) {
-        console.error(`Error al obtener licencias: ${err}`);
-        res.status(500).send('Error interno en el servidor');
-      } else {
-        res.json(results);
-      }
-    });
-  }
+	getAll,
+	getOne
 };
