@@ -7,6 +7,12 @@ const { notFound } = require ('./utils/errorsHandler');
 const express = require('express');
 const app = express();
 const port = process.env.PORT;
+//permisos para el consumo del la api
+app.use((req,res,next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');  //reemplazar por el dominio de la aplicacion react
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+})
 
 // Rutas
 app.use('/', Licenses);

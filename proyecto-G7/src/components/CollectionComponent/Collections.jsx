@@ -1,38 +1,37 @@
 import "./Collections.css";
+import { Link } from 'react-router-dom'
+import useFetch from "../../useFetch";
+
 
 const Collections = () => {
+    const {data} = useFetch('http://localhost:3000/licenses')
+    console.log(data)
     return (
         <main className="main-container">
-        <section className="collection container">
-            <article className="collection__content">
-                <h3 className="collection__title">Star Wars & The Mandalorian</h3>
-                <p className="collection__text">Disfruta de una saga que sigue agregando personajes a su colección.</p>
-                <a className="collection__link" href="./pages/shop/shop">VER COLECCIÓN</a>
-            </article>
-            <picture className="collection__cover">
-                <img src="./images/star-wars/baby-yoda-1.webp" alt="Figura coleccionable Funko de Grogu de la serie The Mandalorian"/>
-            </picture>
-        </section>
-        <section className="collection container">
-            <article className="collection__content">
-                <h3 className="collection__title">POKEMON INDIGO</h3>
-                <p className="collection__text">Atrapa todos los que puedas y disfruta de una colección llena de amigos.</p>
-                <a className="collection__link" href="./pages/shop/shop">VER COLECCIÓN</a>
-            </article>
-            <picture className="collection__cover">
-                <img src="./images/pokemon/vulpix-1.webp" alt="Figura coleccionable Funko de Vulpix de la serie Pokemon"/>
-            </picture>
-        </section>
-        <section className="collection container">
-            <article className="collection__content">
-                <h3 className="collection__title">HARRY POTTER</h3>
-                <p className="collection__text">Revive los recuerdos de una saga llena de magia y encanto.</p>
-                <a className="collection__link" href="./pages/shop/shop">VER COLECCIÓN</a>
-            </article>
-            <picture className="collection__cover">
-                <img src="./images/harry-potter/snape-patronus-1.webp" alt="Figura coleccionable Funko del Patronus de Snape en la película de Harry Potter"/>
-            </picture>
-        </section>
+            {
+                data?.map((licen) => {
+                    const licence = {
+                        id: licen.licence_id,
+                        name: licen.licence_name,
+                        description: licen.licence_description,
+                        img: licen.licence_image,
+                        imgAlt: licen.licence_image_alt_text
+                    }
+
+                    return (
+                    <section key={licence.id} className="collection container">
+                        <article className="collection__content">
+                            <h3 className="collection__title">{licence.name}</h3>
+                            <p className="collection__text">{licence.description}</p>
+                            <Link className="collection__link">VER COLECCIÓN</Link>
+                        </article>
+                        <picture className="collection__cover">
+                            <img src={licence.img} alt={licence.imgAlt} />
+                        </picture>
+                    </section>
+                    )
+                })
+            }
     </main>
     )
 }

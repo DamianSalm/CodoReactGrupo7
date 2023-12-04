@@ -21,7 +21,7 @@ const Footer = () => {
                 </ul>
                 <picture>
                     <Link to='/' >
-                        <img src={"../images/branding/isotype.svg"} alt="Isotipo de la marca Funkoshop"/>
+                        <img src={"../img/branding/isotype.svg"} alt="Isotipo de la marca Funkoshop"/>
                     </Link>
                 </picture>
             </nav>

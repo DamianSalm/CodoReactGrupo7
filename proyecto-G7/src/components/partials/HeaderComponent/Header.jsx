@@ -7,7 +7,7 @@ const Header = () => {
             <nav className="navbar container">
                 <picture className="nabvar__logo">
                     <Link to='/'>
-                        <img src={"/images/branding/logo_light_horizontal.svg"} alt="Isologotipo de la Marca Funkoshop" />
+                        <img src={"/img/branding/logo_light_horizontal.svg"} alt="Isologotipo de la Marca Funkoshop" />
                     </Link>
                 </picture>
                 <ul className="navbar__menu">
@@ -25,7 +25,7 @@ const Header = () => {
                     </li>
                     <li className="navbar__item">
                         <Link to='/cart' className="navbar__cart">
-                            <img src={"/images/icons/cart-icon.svg"} alt="icono de carrito" />
+                            <img src={"/img/icons/cart-icon.svg"} alt="icono de carrito" />
                         </Link>
                     </li>
                 </ul>
