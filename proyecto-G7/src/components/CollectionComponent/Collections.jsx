@@ -1,11 +1,11 @@
-import "./Collections.css";
+//import "./Collections.css";
 import { Link } from 'react-router-dom'
 import useFetch from "../../useFetch";
 
 
 const Collections = () => {
-    const {data} = useFetch('http://localhost:3000/licenses')
-    console.log(data)
+    const {data} = useFetch('http://localhost:3000/licenses');
+    
     return (
         <main className="main-container">
             {

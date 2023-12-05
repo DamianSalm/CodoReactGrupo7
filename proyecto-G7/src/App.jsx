@@ -5,9 +5,9 @@ import { Routes, Route, BrowserRouter } from "react-router-dom"; //componentes d
 import Header from "./components/partials/HeaderComponent/Header";
 import Footer from "./components/partials/FooterComponent/Footer";
 import HomePage from "./pages/HomePage";
-import AdminPage from "./pages/AdminPage";
-import ContactPage from "./pages/ContactPage";
-import ShopPage from "./pages/ShopPage";
+import AdminPage from "./pages/admin/AdminPage";
+import ContactPage from "./pages/shop/ContactPage";
+import ShopPage from "./pages/shop/ShopPage";
 import RegisterComp from "./components/RegisterComp";
 import LoginComp from "./components/LoginComp";
 import LogoutComp from "./components/LogoutComp";
