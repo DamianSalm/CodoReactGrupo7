@@ -1,4 +1,4 @@
-import { Decimal128, Double, Int32 } from "mongodb";
+import { Decimal128 } from "mongodb";
 import mongoose from "mongoose";
 
 const itemSchema = new mongoose.Schema({
@@ -10,20 +10,25 @@ const itemSchema = new mongoose.Schema({
   sku: {
     type: String,
     trim: true,
+    unique: true
   },
   name: {
     type: String,
     required: true,
+    trip: true,
+    unique: true
   },
   description: {
     type: String,
   },
   img_front: {
-    type: String,
-  },
+    data: Buffer,
+    contentType: String
+},
   img_back: {
-    type: String,
-  },
+    data: Buffer,
+    contentType: String
+},
   category: {
     type: String,
   },
@@ -31,13 +36,13 @@ const itemSchema = new mongoose.Schema({
     type: String,
   },
   price: {
-    type: String,
+    type: Decimal128,
   },
   stock: {
-    type: String,
+    type: Number,
   },
   discout: {
-    type: String,
+    type: Decimal128,
   },
   dues: {
     type: String,

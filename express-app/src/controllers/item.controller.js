@@ -26,15 +26,21 @@ export const getOne = async (req, res) => {
 export const postOne = async (req, res) => {
   console.log("posting one");
   try {
-    const { iid, name, description } = req.body;
+    const { iid, sku, name, description, category, licence, price, stock, discout, dues } = req.body;
     const newItem = new Item({
       iid,
       name,
       description,
+      category,
+      licence,
+      sku,
+      price,
+      stock,
+      discout,
+      dues,
     });
     const savedItem = await newItem.save();
-
-    res.json(savedItem);
+     res.json(savedItem);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -45,7 +51,7 @@ export const putOne = async (req, res) => {
     const id = req.params.id;
     const itemFound = await Item.findByIdAndUpdate(id, req.body, { new: true });
     if (!itemFound) return res.status(404).json({ message: "Item not found." });
-    return res.json(itemFound);
+    res.json(itemFound);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -56,9 +62,10 @@ export const deleteOne = async (req, res) => {
     const id = req.params.id;
     const itemFound = await Item.findByIdAndDelete(id);
     if (!itemFound) return res.status(404).json({ message: "Item not found." });
-    await itemFound.de;
-    return res.sendStatus(204);
+    res.sendStatus(204);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
+
+
