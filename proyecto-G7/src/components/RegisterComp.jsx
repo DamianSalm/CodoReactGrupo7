@@ -5,8 +5,8 @@ import { useAuth } from "../context/AuthContext";
 
 const RegisterComp = () => {
   //useForm
-  const { register, handleSubmit, formState: { errors } }= useForm();
   const { isAuth, signup, errors: registerErrors } = useAuth();
+  const { register, handleSubmit, formState: { errors } }= useForm();
 
   //useEffect - useNav
   const navigate = useNavigate();

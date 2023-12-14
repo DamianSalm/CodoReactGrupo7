@@ -36,13 +36,13 @@ const itemSchema = new mongoose.Schema({
     type: String,
   },
   price: {
-    type: Decimal128,
+    type: Number,
   },
   stock: {
     type: Number,
   },
   discout: {
-    type: Decimal128,
+    type: Number,
   },
   dues: {
     type: String,

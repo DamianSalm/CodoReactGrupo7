@@ -1,115 +1,121 @@
 import "./CreateComp.css";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom"
+import { useEffect } from "react";
 import { useItems } from "../context/ItemsContext";
 import { useAuth } from "../context/AuthContext";
 
 const CreateComp = () => {
+  const { categories, licences, createItem } = useItems();
+  const { errors: registerErrors } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const { items, createItem } = useItems();
-  const { register, handleSubmit } = useForm();
-  const { errors } = useAuth()
+  const navigate = useNavigate()
 
   const onSubmit = handleSubmit((values) => {
-    console.log(values);
     createItem(values);
+    navigate(`/admin`)
   });
+
+  useEffect(() => {
+    // console.log(errors);
+  }, [errors]);
 
   return (
     <div className="container">
       <h1>CREAR NUEVO ITEM</h1>
-      <form className="form-control formulario" onSubmit={onSubmit}>
-        {/* <div className="row">
-          <div className="col-3">
+      <form className="form-control m-2" onSubmit={onSubmit}>
+        <div className="row my-3">
+          <div className="col">
             <label className="col-form-label">Categoria:</label>
-          </div>
-          <div className="col-3">
-            <select className="form-select col-3">
-              <option defaultValue={"Seleccionar"}>Seleccionar</option>
-              <option value="">1</option>
+            <select className="form-select col-3" {...register("category")}>
+              <option>Funko</option>
+              <option>Remera</option>
             </select>
           </div>
-          <div className="col-3">
+          <div className="col">
             <label className="col-form-label">Licencia:</label>
-          </div>
-          <div className="col-3">
-            <select className="form-select">
-              <option defaultValue={"Seleccionar"}>Seleccionar</option>
-              <option value="">1</option>
+            <select className="form-select" {...register("licence")}>
+              <option value="">Pokemon</option>
+              <option value="">StarWars</option>
+              <option value="">Digimon</option>
             </select>
           </div>
-        </div> */}
-        <div className="row">
+        </div>
+        <div className="row my-3">
           <div className="col-3">
             <label className="col-form-label">Nombre del producto:</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Nombre del producto"
+              {...register("name", { required: {value:true, message:"Este campo es requerido"}, minLength: {value:4, message:"Mínimo 4 caracteres"} })}
+              />
+          {/* {errors.name && <span style="display: block; color: tomato; font-size: x-small">{errors.name.message}</span>} */}
           </div>
           <div className="col-3">
+            <label className="col-form-label">iid:</label>
             <input
-            type="text"
-            className="form-control"
-            placeholder="Nombre del producto"
-            {...register("name", {required: true}) }/>
+              type="text"
+              className="form-control"
+              placeholder="iid"
+              {...register("iid", { required: true })}
+              />
           </div>
         </div>
         <div className="row">
-          <div className="col-3">
-            <label className="col-form-label">iid:</label>
-          </div>
-          <div className="col-3">
-            <input
-            type="text"
-            className="form-control"
-            placeholder="iid"
-            {...register("iid", {required: true}) }/>
+          <div className="col-6">
+            <textarea
+              className="form-control"
+              placeholder="Descripcion del producto"
+              {...register("description")}
+            ></textarea>
           </div>
         </div>
-        * <div className="col-3">
-          <label className="col-form-label">iid:</label>
-        </div>
-        <textarea
-          className="form-control"
-          placeholder="Descripcion del producto"
-          {...register("description")}
-        ></textarea>
-        {/*<div className="row">
+        <div className="row">
           <div className="col-2">
             <label>SKU:</label>
-          </div>
-          <div className="col-2">
-            <input type="text" className="form-control" />
+            <input type="text" className="form-control" placeholder="sku" {...register("sku")} />
           </div>
           <div className="col-2">
             <label>Precio:</label>
-          </div>
-          <div className="col-2">
-            <input type="text" className="form-control" />
+            <input type="number" className="form-control" placeholder="precio" {...register("price", {valueAsNumber: true})} />
           </div>
           <div className="col-2">
             <label>Stock:</label>
-          </div>
-          <div className="col-2">
-            <input type="text" className="form-control" />
+            <input type="number" className="form-control" placeholder="stock" {...register("stock", {valueAsNumber: true})} />
           </div>
         </div>
         <div className="row">
           <div className="col-3">
             <label>Descuento:</label>
+            <input type="number" className="form-control" placeholder="descuento" {...register("discount", {valueAsNumber: true})} />
           </div>
-          <div className="col-3">
-            <input type="text" className="form-control" />
-          </div>
-          <div className="col-3">
-            <label>Cuotas:</label>
-          </div>
-          <div className="col-3">
-            <select type="text" className="form-select">
-              <option defaultValue={"Seleccionar"}>Seleccionar</option>
-              <option value="">1</option>
-            </select>
-          </div>
+          {/* <input
+            type="file"
+            name="img_back"
+            className="form-control"
+            placeholder="Imagen trasera"
+            {...register("img_back")}
+          />
+          <input
+            type="file"
+            name="img_front"
+            className="form-control"
+            placeholder="Imagen delantera"
+            {...register("img_front")}
+          /> */}
         </div>
-        Imágenes: <input type="file" name="" id="" className="form-control" /> */}
-        <button type="submit" className="btn btn-danger">Agregar Producto</button>
+        <div>
+        <button type="submit" className="btn btn-danger">
+          Agregar Producto
+        </button>
         <button className="btn btn-danger">Limpiar</button>
+        </div>
       </form>
     </div>
   );

@@ -39,36 +39,36 @@ export const AuthProvider = ({ children }) => {
   //Luego actualiza los estados user, isAuth y errors
   const signup = async (data) => {
     try {
-      const res = await llamarRegisterUser(data);
+      await llamarRegisterUser(data);
     } catch (err) {
-      if (Array.isArray(err.response.data)) return setErrors(err.response.data);
+      if (Array.isArray(err.response.data)){
       console.log(err);
-      setErrors([err.response.data]);
+      return setErrors(err.response.data);
+      }
     }
   };
+
   const signin = async (data) => {
     try {
       const res = await llamarLoginUser(data);
       setIsAuth(true);
       setUser(res.data);
     } catch (err) {
-      console.log(err);
-      if (Array.isArray(err.response.data)) return errors.append(err.response.data);
-      setErrors([err.response.data]);
+      if (Array.isArray(err.response.data)) return setErrors([err.response.data]);
     }
   };
+  
   const logout = async () => {
     try {
-      const res = await llamarLogout();
+      await llamarLogout();
       setIsAuth(false)
       setUser(null)
     }catch (err){
-      console.log("Hey, desde el context")
       console.log(err)
     }
   }
 
-  //este efecto dilata 3 segundos la actualizacion de estados de errores al cargar componentes
+  //este efecto borra los mensajes de errores en forms luego de 3 segundos.
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
@@ -95,7 +95,7 @@ export const AuthProvider = ({ children }) => {
         if (!res.data) {
           setIsAuth(false);
           setLoading(false);
-          return;
+          return setUser(null);
         }
 
         setIsAuth(true);
@@ -105,6 +105,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuth(false);
         setUser(null);
         setLoading(false);
+        console.log(err)
       }
     };
     verifyToken();

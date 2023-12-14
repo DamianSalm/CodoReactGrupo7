@@ -3,7 +3,8 @@ import axios from "./axiosConf";
 //working api call
 //el password debe tener minimo 6 caracteres, el email debe tener formato de email
 export const llamarRegisterUser = (data) => {
-  // console.log("Pidiendo a la api", data);
+  const response = axios.post("/register", data);
+  return response
 };
 
 export const llamarLoginUser = (data) => {
@@ -17,6 +18,4 @@ export const llamarLogout = () => {
   return response;
 };
 
-
-
-export const llamarVerifyToken = (co) => axios.post(`/auth/verify`);
+export const llamarVerifyToken = () => axios.post(`/auth/verify`);
