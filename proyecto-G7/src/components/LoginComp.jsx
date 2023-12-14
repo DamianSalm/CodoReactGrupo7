@@ -24,13 +24,13 @@ const LoginComp = () => {
   }, [isAuth]);
 
   return (
-    <>
-      <h1> Login here </h1>
+    <div id="login">
+      <h1 className="login__title"> Login here </h1>
       <br />
       {signErrors.map((error, i) => (
         <div key={i}>{error}</div>
       ))}
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="login__form">
         <label>Email: </label>
         <input
           type="email"
@@ -47,13 +47,13 @@ const LoginComp = () => {
         />
         {errors.password && <p>Password is required</p>}
 
-        <button type="submit">Login</button>
+        <button type="submit" >Login</button>
       </form>
       <br />
-      <p>
-        No tienes cuenta? <Link to="/register">Registrate!</Link>
+      <p className="form__link">
+        No tienes cuenta? <Link to="/register"  >Registrate!</Link>
       </p>
-    </>
+    </div>
   );
 };
 export default LoginComp;

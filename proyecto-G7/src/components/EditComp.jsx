@@ -1,9 +1,9 @@
-import "./CreateComp.css";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useItems } from "../context/ItemsContext";
 import { useAuth } from "../context/AuthContext";
+
 
 const EditComp = () => {
   const { itemId, items, categories, licences, updateItem, getOneItem } = useItems();

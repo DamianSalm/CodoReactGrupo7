@@ -1,9 +1,9 @@
-import "./CreateComp.css";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 import { useItems } from "../context/ItemsContext";
 import { useAuth } from "../context/AuthContext";
+
 
 const CreateComp = () => {
   const { categories, licences, createItem } = useItems();
@@ -114,7 +114,6 @@ const CreateComp = () => {
         <button type="submit" className="btn btn-danger">
           Agregar Producto
         </button>
-        <button className="btn btn-danger">Limpiar</button>
         </div>
       </form>
     </div>

@@ -20,17 +20,17 @@ const RegisterComp = () => {
   });
 
   return (
-    <>
-      <h1> Register a new user here </h1>
+    <div id="register">
+      <h1 className="register__title"> Register a new user here </h1>
       {
         registerErrors.map((error, i) => (
-        <div key={i}>
+        <div key={i} className="register__subtitle">
           {error}
         </div>
           ))
       }
-      <form onSubmit={onSubmit}>
-        <label className="form-label">Nombre: </label>
+      <form onSubmit={onSubmit} className="register__form">
+        <label>Nombre: </label>
         <input
           type="text"
           placeholder="Nombre"
@@ -63,8 +63,8 @@ const RegisterComp = () => {
         <button type="submit">Register</button>
       </form>
       <br />
-      <p>Ya tienes cuenta? <Link to="/login">Log in!</Link></p>
-    </>
+      <p className="form__terms">Ya tienes cuenta? <Link to="/login">Log in!</Link></p>
+    </div>
   );
 };
 export default RegisterComp;
