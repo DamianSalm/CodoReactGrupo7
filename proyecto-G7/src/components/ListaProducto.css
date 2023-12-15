@@ -14,15 +14,3 @@
     align-items: center;
     gap: 1em;
 }
-.fa-pencil{
-    color: #1d84b5;
-}
-.fa-trash{
-    color: #ff4848;
-}
-.fa-plus{
-    background-color: #ff4848;
-    color:white;
-    padding: .5em;
-    border-radius: .5em;
-}

@@ -18,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    gap: 1em;
+    gap: var(--spacing-12);
 }
 
 #login .form__link {

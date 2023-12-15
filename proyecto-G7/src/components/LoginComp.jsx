@@ -31,10 +31,11 @@ const LoginComp = () => {
         <div key={i}>{error}</div>
       ))}
       <form onSubmit={onSubmit} className="login__form">
-        <label>Email: </label>
+        <label className="form__label">Email: </label>
         <input
           type="email"
           placeholder="Email"
+          className="form__input"
           {...register("email", { required: true })}
         />
         {errors.email && <p>email is required</p>}
@@ -43,11 +44,12 @@ const LoginComp = () => {
         <input
           type="password"
           placeholder="Password"
+          className="form__input"
           {...register("password", { required: true })}
         />
         {errors.password && <p>Password is required</p>}
 
-        <button type="submit" >Login</button>
+        <button type="submit" className="btn--primary btn--large">Login</button>
       </form>
       <br />
       <p className="form__link">

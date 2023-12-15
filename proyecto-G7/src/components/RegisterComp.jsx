@@ -21,6 +21,7 @@ const RegisterComp = () => {
 
   return (
     <div id="register">
+      <div className="register__header "></div>
       <h1 className="register__title"> Register a new user here </h1>
       {
         registerErrors.map((error, i) => (
@@ -30,37 +31,40 @@ const RegisterComp = () => {
           ))
       }
       <form onSubmit={onSubmit} className="register__form">
-        <label>Nombre: </label>
+        <label  className="form__label">Nombre: </label>
         <input
           type="text"
           placeholder="Nombre"
+          className="form__input"
           {...register("username", { required: true })}
         />
         {errors.username && (
           <p>Username is required</p>
         )}
 
-        <label>Email: </label>
+        <label className="form__label">Email: </label>
         <input
           type="email"
           placeholder="Email"
+          className="form__input"
           {...register("email", { required: true })}
         />
         {errors.email && (
           <p>email is required</p>
         )}
 
-        <label>Password: </label>
+        <label  className="form__label">Password: </label>
         <input
           type="password"
           placeholder="Password"
+          className="form__input"
           {...register("password", { required: true })}
         />
         {errors.password && (
           <p>Password is required</p>
         )}
 
-        <button type="submit">Register</button>
+        <button type="submit" className="btn--primary btn--large">Register</button>
       </form>
       <br />
       <p className="form__terms">Ya tienes cuenta? <Link to="/login">Log in!</Link></p>

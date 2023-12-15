@@ -2,6 +2,8 @@ import "./ListaProducto.css";
 import { useItems } from "../context/ItemsContext";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 const ListaProducto = () => {
   const { itemId, items, getAllItems, deleteItem, setId } = useItems();
@@ -35,7 +37,7 @@ const ListaProducto = () => {
         </div>
         <div className="agregar">
           {
-            <Link className="fa-solid fa-plus" to="/create">
+            <Link className="fa-solid fa-plus btn--primary btn--medium" to="/create">
               Añadir Item
             </Link>
           }
@@ -50,7 +52,7 @@ const ListaProducto = () => {
           <h1>LISTADO DE PRODUCTOS</h1>
           <div className="agregar">
             {
-              <Link className="fa-solid fa-plus" to="/create">
+              <Link className="fa-solid fa-plus btn--primary btn--medium" to="/create">
                 Añadir Item
               </Link>
             }

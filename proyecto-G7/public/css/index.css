@@ -14,12 +14,12 @@
 /* PARTIALS */
 
 @import url('./partials/header.css');
+@import url('./partials/form.css');
 @import url('./partials/footer.css');
 
 /* COMPONENTS */
 
 @import url('./components/buttons.css');
-@import url('./components/form.css');
 @import url('./components/card.css');
 @import url('./components/slider.css');
 
@@ -31,5 +31,5 @@
 @import url('./pages/admin.css');
 @import url('./pages/login.css');
 @import url('./pages/register.css');
-/*@import url('./pages/create.css');*/
+@import url('./pages/create.css');
 @import url('./pages/edit.css');
