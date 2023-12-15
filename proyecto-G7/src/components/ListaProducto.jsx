@@ -1,18 +1,20 @@
-import "./ListaProducto.css";
 import { useItems } from "../context/ItemsContext";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css'
 
+
+import Swal from "sweetalert2"
+import withReactContent from "sweetalert2-react-content"
+const mySwal = withReactContent(Swal)
 
 const ListaProducto = () => {
   const { itemId, items, getAllItems, deleteItem, setId } = useItems();
     const navigate = useNavigate()
 
+  const refresh = async () => {
+    await getAllItems();
+  };
   useEffect(() => {
-    const refresh = async () => {
-      await getAllItems();
-    };
     refresh();
     if ((items.lenth == 0)) {
       return "Aún no hay nada aquí.";
@@ -21,8 +23,25 @@ const ListaProducto = () => {
 
   const handleDelete = (id) => {
       deleteItem(id);
+      
   };
+  const confirmDelete = (id) => {
+    Swal.fire({
+      title: "Deseas eliminar este producto?",
+      text: "No podes revertir esto",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, quiero eliminar",
 
+    }).then((result) => {
+      if(result.isConfirmed){
+        handleDelete(id)
+        Swal.fire("Borrado", "Tu Documento ha sido eliminado", "success")
+      }
+    })
+  }
   const handleUpdate = (id) => {
     navigate(`/update/${id}`)
   };
@@ -46,52 +65,45 @@ const ListaProducto = () => {
     </>
   );
   return (
-    <>
-      <div className="lista-producto">
-        <div className="title">
+    <div id="admin" className="container">
+      <section className="admin__list">
+        <div className="admin__header">
           <h1>LISTADO DE PRODUCTOS</h1>
-          <div className="agregar">
             {
               <Link className="fa-solid fa-plus btn--primary btn--medium" to="/create">
                 Añadir Item
               </Link>
             }
-          </div>
         </div>
-        <table className="table table-light">
-          <thead>
-            <tr>
+        <table className="admin-table">
+            <tr className="admin-table__header">
               <th>ID</th>
-              <th>Código</th>
+              <th>Sku</th>
               <th>Nombre del producto</th>
               <th>Categoría</th>
               <th>&nbsp;</th>
               <th>&nbsp;</th>
-              <th>img</th>
             </tr>
-          </thead>
           <tbody>
             {items.map((item) => (
-              <tr key={item._id}>
-                <th scope="row">{item._id}</th>
+              <tr key={item._id} className="admin-table__row">
+                <th>{item.iid}</th>
                 <td>{item.sku}</td>
                 <td>{item.name}</td>
                 <td>{item.category}</td>
                 <td>
-                  <button onClick={()=>handleUpdate(item._id)} className="btn btn-warning">Update</button>
+                  <button onClick={()=>handleUpdate(item._id)} className="btn--update btn--medium">Update</button>
                 </td>
                 <td>
-                  <button onClick={()=>handleDelete(item._id)} className="btn btn-danger">Delete</button>
+                  <button onClick={()=> confirmDelete(item._id)} className="btn--primary btn--medium">Delete</button>
                 </td>
-                <td>
-                  <img src={item.img_back} alt="img_back" />
-                </td>
+
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 

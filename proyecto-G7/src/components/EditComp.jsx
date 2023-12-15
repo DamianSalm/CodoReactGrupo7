@@ -26,7 +26,6 @@ const EditComp = () => {
     }
       }
       loadItem()
-    // console.log(errors);
   }, []);
 
   const onSubmit = handleSubmit((values) => {

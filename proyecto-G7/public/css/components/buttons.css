@@ -16,7 +16,9 @@
 .btn--primary:hover {
     background-color: var(--secondary-solid);
 }
-
+.btn--update{
+    background-color: var(--update-solid);
+}
 /* SIZES */
 
 .btn--medium {

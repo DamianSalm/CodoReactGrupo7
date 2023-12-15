@@ -24,36 +24,44 @@ const LoginComp = () => {
   }, [isAuth]);
 
   return (
-    <div id="login">
+    <div id="login" className="container">
       <h1 className="login__title"> Login here </h1>
       <br />
       {signErrors.map((error, i) => (
         <div key={i}>{error}</div>
       ))}
       <form onSubmit={onSubmit} className="login__form">
-        <label className="form__label">Email: </label>
-        <input
-          type="email"
-          placeholder="Email"
-          className="form__input"
-          {...register("email", { required: true })}
-        />
+        <div class="form__box--grid">
+          <label className="form__label" for="email">Email: </label>
+          <input
+            type="email"          
+            placeholder="Email"
+            className="form__input"
+            {...register("email", { required: true })}
+          />
+        </div>
         {errors.email && <p>email is required</p>}
-
-        <label>Password: </label>
-        <input
-          type="password"
-          placeholder="Password"
-          className="form__input"
-          {...register("password", { required: true })}
-        />
+        <div class="form__box--grid">
+          <label className="form__label" for="password">Password: </label>
+          <input
+            type="password"
+            placeholder="Password"
+            className="form__input"
+            {...register("password", { required: true })}
+          />
+        </div>
         {errors.password && <p>Password is required</p>}
 
-        <button type="submit" className="btn--primary btn--large">Login</button>
+        <div class="form__submission">
+                    <input className="form__btn btn btn--primary btn--large" type="submit" value="Ingresar"/>
+                    <div className="form__remember">
+                        <input type="checkbox" name="remember" title="recordarme" id=""/>
+                        <label for="">Recordarme</label>
+                    </div>
+                </div>
       </form>
-      <br />
-      <p className="form__link">
-        No tienes cuenta? <Link to="/register"  >Registrate!</Link>
+      <p className="form">
+        No tienes cuenta? <Link to="/register" className="form__link" >Registrate!</Link>
       </p>
     </div>
   );

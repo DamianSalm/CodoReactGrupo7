@@ -77,7 +77,7 @@ export const ItemsProvider = ({ children }) => {
   const updateItem = async (id, values) => {
     try {
       const res = await llamarPutOne(id, values);
-      //setItems(res.data)
+      setItems(res.data)
     } catch (err) {
       console.log(err);
     }

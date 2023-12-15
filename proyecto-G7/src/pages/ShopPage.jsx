@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 const ShopPage = () => {
     const { items, getAllItems } = useItems();
-    console.log(items)
     useEffect(() => {
         const refresh = async () => {
           await getAllItems();
@@ -23,7 +22,8 @@ const ShopPage = () => {
               <ul className="shop__items">
                   {
                       items?.map((item) => {
-                          return (<li className="shop__item" key={item.iid}>
+                          return (
+                          <li className="shop__item" key={item.iid}>
                               <article className='card-item'>
                                   <Link className='card-item__link'>
                                       <picture className="card-item__cover">

@@ -10,6 +10,11 @@
     --secondary-500: rgb(29, 132, 181, 0.5);
     --secondary-300: rgb(29, 132, 181, 0.3);
 
+    --update-solid: #F2D300;
+    --update-900: rgb(242, 211, 0.9);
+    --update-500: rgb(242, 211, 0.5);
+    --update-300: rgb(242, 211, 0.3);
+
     --dark-solid: #1F1F1F;
     --dark-900: rgb(31, 31, 31, 0.9);
     --dark-500: rgb(31, 31, 31, 0.5);
