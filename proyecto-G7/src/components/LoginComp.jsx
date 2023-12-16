@@ -31,7 +31,7 @@ const LoginComp = () => {
         <div key={i}>{error}</div>
       ))}
       <form onSubmit={onSubmit} className="login__form">
-        <div class="form__box--grid">
+        <div className="form__box--grid">
           <label className="form__label" for="email">Email: </label>
           <input
             type="email"          
@@ -41,7 +41,7 @@ const LoginComp = () => {
           />
         </div>
         {errors.email && <p>email is required</p>}
-        <div class="form__box--grid">
+        <div className="form__box--grid">
           <label className="form__label" for="password">Password: </label>
           <input
             type="password"
@@ -52,7 +52,7 @@ const LoginComp = () => {
         </div>
         {errors.password && <p>Password is required</p>}
 
-        <div class="form__submission">
+        <div className="form__submission">
                     <input className="form__btn btn btn--primary btn--large" type="submit" value="Ingresar"/>
                     <div className="form__remember">
                         <input type="checkbox" name="remember" title="recordarme" id=""/>

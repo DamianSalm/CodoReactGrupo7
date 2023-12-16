@@ -103,3 +103,13 @@ textarea::placeholder {
     font-size: var(--font-medium);
     padding: var(--spacing-8);
 }
+
+@media (max-width:600px){
+    .form__label{
+        font-size: var(--font-xsmall);
+    }
+    .form__input{
+        font-size: var(--font-xsmall);
+        border-bottom: 1px solid #ff3333;
+    }
+}
