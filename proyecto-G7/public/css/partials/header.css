@@ -2,13 +2,18 @@
 
 .page-header {
     background-color: var(--dark-bg-solid);
-    padding: var(--spacing-16);
+    padding: .2em;
 }
 
 .navbar {
+    background-color: #30343f;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    padding: 1.5em;
+    font-family: "Montserrat";
 }
 
 .nabvar__logo {
@@ -60,4 +65,9 @@
 
 .submenu__link:hover {
     background-color: var(--primary-900);
+}
+
+a{
+    text-decoration: none;
+    color: white;
 }

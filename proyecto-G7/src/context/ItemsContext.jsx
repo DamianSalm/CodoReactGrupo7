@@ -66,7 +66,7 @@ export const ItemsProvider = ({ children }) => {
   const createItem = async (values) => {
     try {
       const res = await llamarPostOne(values);
-      setItems(res.data);
+      //setItems(res.data);
       // if (res) { setItems(res.data) }
     } catch (err) {
       console.log(err);

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import "./Footer.css";
+import { useAuth } from "../../../context/AuthContext";
 
 const Footer = () => {
+    const { isAuth } = useAuth();
+
     return (
         <footer className="footer">
             <nav className="navbar container">
@@ -9,15 +11,18 @@ const Footer = () => {
                     <li className="navbar__item">
                         <Link to='/shop' className="navbar__link" >SHOP</Link>
                     </li>
-                    <li className="navbar__item">
-                        <Link to='/register' className="navbar__link" >REGISTRARSE</Link>
-                    </li>
-                    <li className="navbar__item">
-                        <Link to='/login' className="navbar__link" >LOGIN</Link>
-                    </li>
-                    <li className="navbar__item">
-                        <Link to='/contact' className="navbar__link" >CONTACTO</Link>
-                    </li>
+                    {isAuth ? (
+                        <></>
+                        ) : 
+                        (<>
+                            <li className="navbar__item">
+                                <Link to='/register' className="navbar__link" >REGISTRARSE</Link>
+                            </li>
+                            <li className="navbar__item">
+                                <Link to='/login' className="navbar__link" >LOGIN</Link>
+                            </li>
+                        </>)
+                    }
                 </ul>
                 <picture>
                     <Link to='/' >

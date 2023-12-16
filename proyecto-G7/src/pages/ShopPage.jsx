@@ -1,13 +1,51 @@
 import { useItems } from "../context/ItemsContext";
+import { Link } from "react-router-dom";
+import { Filter } from "../components/FilterComponent/Filter"
+import { useEffect } from "react";
 
 const ShopPage = () => {
-  const items = useItems();
-
+    const { items, getAllItems } = useItems();
+    useEffect(() => {
+        const refresh = async () => {
+          await getAllItems();
+        };
+        refresh();
+        if ((items.lenth == 0)) {
+          return "Aún no hay nada aquí.";
+        };
+      }, []);
   return (
-    <>
-      <h1> ShopPage </h1>
-    </>
-  );
-};
+      <main className='container' id='shop'>
+          <Filter/>
 
+          <section className="shop__content">
+              <ul className="shop__items">
+                  {
+                      items?.map((item) => {
+                          return (
+                          <li className="shop__item" key={item.iid}>
+                              <article className='card-item'>
+                                  <Link className='card-item__link'>
+                                      <picture className="card-item__cover">
+                                          <span className="card-item__tag">nombre?</span>
+                                          <img src={`./img/${item.image_front}`} alt={`Figura coleccionable Funko de un ${item.name}`} />
+                                          <img src={`./img/${item.image_back}`} alt={`Figura coleccionable Funko de un ${item.name} en caja`} />
+                                      </picture>
+                                      <div>
+                                          <p className="card-item__">{item.licence}</p>
+                                          <h4 className="card-item__name">{item.name}</h4>
+                                          <p className="card-item__price">{item.price}</p>
+                                          <p className="card-item__promo"></p>
+                                      </div>
+                                  </Link>
+                              </article>
+                          </li>)
+                      })
+                  }
+              </ul>
+              <div className="pagination"></div>
+          </section>
+      </main>
+  )
+}
 export default ShopPage;
