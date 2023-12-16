@@ -33,7 +33,7 @@ const RegisterComp = () => {
       }
       <form onSubmit={onSubmit} className="register__form">
         <div class="form__box--grid">
-          <label  className="form__label" for="name">Nombre: </label>
+          <label  className="form__label" htmlFor="name">Nombre: </label>
             <input
               type="text"
               placeholder="Nombre"
@@ -46,7 +46,7 @@ const RegisterComp = () => {
           <p>Username is required</p>
         )}
         <div class="form__box--grid">
-          <label className="form__label" for="email">Email: </label>
+          <label className="form__label" htmlFor="email">Email: </label>
           <input
             type="email"
             placeholder="Email"
@@ -75,7 +75,7 @@ const RegisterComp = () => {
             <input className="form__btn btn btn--primary btn--large" type="submit" value="Registrar"/>
             <div className="form__terms">
                 <input type="checkbox" name="" id="" title="Acepto"/>
-                <label for="">Acepto <a className="form__link" href="">Términos y Condiciones</a></label>
+                <label htmlFor="">Acepto <a className="form__link" href="">Términos y Condiciones</a></label>
             </div>
         </div>
       </form>

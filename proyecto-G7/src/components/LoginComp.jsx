@@ -32,7 +32,7 @@ const LoginComp = () => {
       ))}
       <form onSubmit={onSubmit} className="login__form">
         <div className="form__box--grid">
-          <label className="form__label" for="email">Email: </label>
+          <label className="form__label" htmlFor="email">Email: </label>
           <input
             type="email"          
             placeholder="Email"
@@ -42,7 +42,7 @@ const LoginComp = () => {
         </div>
         {errors.email && <p>email is required</p>}
         <div className="form__box--grid">
-          <label className="form__label" for="password">Password: </label>
+          <label className="form__label" htmlFor="password">Password: </label>
           <input
             type="password"
             placeholder="Password"
@@ -56,7 +56,7 @@ const LoginComp = () => {
                     <input className="form__btn btn btn--primary btn--large" type="submit" value="Ingresar"/>
                     <div className="form__remember">
                         <input type="checkbox" name="remember" title="recordarme" id=""/>
-                        <label for="">Recordarme</label>
+                        <label htmlFor="">Recordarme</label>
                     </div>
                 </div>
       </form>

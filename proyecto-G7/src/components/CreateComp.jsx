@@ -31,7 +31,7 @@ const CreateComp = () => {
       <div className="form__flex">
           <div className="form__box--flex">
             <div className="col">
-              <label className="form__label" for="category">Categoria:</label>
+              <label className="form__label" htmlFor="category">Categoria:</label>
               <select className="form__select" id="category" {...register("category")}>
                 <option value="funko">Funko</option>
                 <option value="remera">Remera</option>
@@ -39,7 +39,7 @@ const CreateComp = () => {
             </div>
           </div>
           <div className="form__box--flex">
-            <label className="form__label" for="licence">Licencia:</label>
+            <label className="form__label" htmlFor="licence">Licencia:</label>
             <select className="form__select" id="licence"{...register("licence")}>
               <option value="pokemon">Pokemon</option>
               <option value="star wars">StarWars</option>
@@ -48,7 +48,7 @@ const CreateComp = () => {
           </div>
       </div>
       <div className="form__box--flex">
-          <label className="form__label" for="name">Nombre del producto:</label>
+          <label className="form__label" htmlFor="name">Nombre del producto:</label>
           <input
             type="text" id="name"
             className="form__input"
@@ -64,7 +64,7 @@ const CreateComp = () => {
             {...register("description")}
           />
       </div>
-      {/*
+      
         <div className="form__box--flex">
           <div className="col-3">
             <label className="form__label">iid:</label>
@@ -76,20 +76,20 @@ const CreateComp = () => {
               />
           </div>
         </div>
-        */}
+
         <div className="form__flex">
           <div className="form__box--flex">
-            <label className="form__label" for="sku">SKU:</label>
-            <input type="text" className="form__input" id="sku" placeholder="SSK111AB001" {...register("sku")} required />
+            <label className="form__label" htmlFor="sku">SKU:</label>
+            <input type="text" className="form__input" id="sku" placeholder="SSK111AB001" {...register("sku", { required: {value:true, message:"Este campo es requerido"}, minLength: {value:4, message:"Mínimo 4 caracteres"} })} required />
           </div>
           <div className="form__box--flex">
-            <label className="form__label" for="price">Precio:</label>
+            <label className="form__label" htmlFor="price">Precio:</label>
             <div className="form__input--wrapper">
               <input type="number" className="form__input" id="price" data-type="currency" placeholder="0.000,00" {...register("price", {valueAsNumber: true})} />
             </div>
           </div>
           <div className="form__box--flex">
-            <label className="form__label" for="stock">Stock:</label>
+            <label className="form__label" htmlFor="stock">Stock:</label>
             <div className="form__input--wrapper">
               <input type="number" className="form__input" id="stock"placeholder="stock" {...register("stock", {valueAsNumber: true})} />
               
@@ -98,7 +98,7 @@ const CreateComp = () => {
         </div>
         <div className="form__flex">
           <div className="form__box--flex">
-            <label className="form__label" for="discount">Descuento:</label>
+            <label className="form__label" htmlFor="discount">Descuento:</label>
             <div className="form__input--wrapper">
               <input type="number"
                className="form__input"
@@ -107,7 +107,7 @@ const CreateComp = () => {
                   {...register("discount", {valueAsNumber: true})} /><span>%</span>
             </div>
             <div className="form__box--flex">
-                <label className="form__label" for="dues">Cuotas:</label>
+                <label className="form__label" htmlFor="dues">Cuotas:</label>
                 <select className="form__select" name="dues" id="dues">
                     <option value="0">Sin cuotas</option>
                     <option value="3">3 cuotas s/ interés</option>
@@ -122,7 +122,7 @@ const CreateComp = () => {
         </div>
         {/*
         <div className="form__box--flex">
-          <label className="form__label" for="images">Imagenes:</label>
+          <label className="form__label" htmlFor="images">Imagenes:</label>
           <input
             type="file"
             name="img_back"

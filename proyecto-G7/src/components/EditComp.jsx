@@ -30,7 +30,7 @@ const EditComp = () => {
 
   const onSubmit = handleSubmit((values) => {
     updateItem(params.id, values);
-    navigate('/admin')
+    /*if (isAuth) navigate('/admin')*/
   });
 
   return (
@@ -42,7 +42,7 @@ const EditComp = () => {
       <form className="create__form" onSubmit={onSubmit}>
         <div className="form__flex">
           <div className="form__box--flex">
-              <label class="form__label" for="category">Categoria:</label>
+              <label className="form__label" htmlFor="category">Categoria:</label>
               <select className="form__select"
                 id="category"
                 defaultValue={items.category}
@@ -52,7 +52,7 @@ const EditComp = () => {
               </select>
             </div>
             <div className="form__box--flex">
-              <label className="form__label" for="licence">Licencia:</label>
+              <label className="form__label" htmlFor="licence">Licencia:</label>
               <select className="form__select"
                 id="licence"
                 defaultValue={items.licence}
@@ -63,7 +63,7 @@ const EditComp = () => {
             </div>
           </div>
           <div className="form__box--flex">
-            <label className="form__label" for="name">Nombre del producto:</label>
+            <label className="form__label" htmlFor="name">Nombre del producto:</label>
             <input
               type="text"
               id="name"
@@ -97,7 +97,7 @@ const EditComp = () => {
         </div>
         <div className="form__flex">
           <div className="form__box--flex">
-            <label className="form__label" for="sku">SKU:</label>
+            <label className="form__label" htmlFor="sku">SKU:</label>
             <input
               type="text"
               id="sku"
@@ -108,7 +108,7 @@ const EditComp = () => {
             />
           </div>
           <div className="form__box--flex">
-            <label className="form__label" for="price">Precio:</label>
+            <label className="form__label" htmlFor="price">Precio:</label>
             <input
               type="number"
               id="price"
@@ -119,7 +119,7 @@ const EditComp = () => {
             />
           </div>
           <div className="form__box--flex">
-            <label className="form__label" for="stock">Stock:</label>
+            <label className="form__label" htmlFor="stock">Stock:</label>
             <input
               type="number"
               id="stock"
@@ -132,8 +132,8 @@ const EditComp = () => {
         </div>
         <div className="form__flex">
           <div className="form__box--flex">
-            <label className="form__label" for="discount">Descuento:</label>
-            <div class="form__input--wrapper">
+            <label className="form__label" htmlFor="discount">Descuento:</label>
+            <div className="form__input--wrapper">
               <input
                 type="number"
                 id="discount"
@@ -146,7 +146,7 @@ const EditComp = () => {
             </div>
           </div>
           <div className="form__box--flex">
-            <label className="form__label" for="dues">Cuotas:</label>
+            <label className="form__label" htmlFor="dues">Cuotas:</label>
             <select
               type="number"
               id="dues"

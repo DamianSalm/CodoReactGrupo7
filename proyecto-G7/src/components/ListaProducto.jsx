@@ -2,20 +2,17 @@ import { useItems } from "../context/ItemsContext";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
 const mySwal = withReactContent(Swal)
 
 const ListaProducto = () => {
-  const { itemId, items, getAllItems, deleteItem, setId } = useItems();
-    const navigate = useNavigate()
+  const { items, getAllItems, deleteItem } = useItems();
+  const navigate = useNavigate();
 
-  const refresh = async () => {
-    await getAllItems();
-  };
+
   useEffect(() => {
-    refresh();
+    getAllItems();
     if ((items.lenth == 0)) {
       return "Aún no hay nada aquí.";
     };
@@ -23,7 +20,7 @@ const ListaProducto = () => {
 
   const handleDelete = (id) => {
       deleteItem(id);
-      
+      getAllItems();
   };
   const confirmDelete = (id) => {
     Swal.fire({
@@ -76,7 +73,8 @@ const ListaProducto = () => {
             }
         </div>
         <table className="admin-table">
-            <tr className="admin-table__header">
+            <thead>
+              <tr className="admin-table__header">
               <th>ID</th>
               <th>Sku</th>
               <th>Nombre del producto</th>
@@ -84,6 +82,7 @@ const ListaProducto = () => {
               <th>&nbsp;</th>
               <th>&nbsp;</th>
             </tr>
+            </thead>
           <tbody>
             {items.map((item) => (
               <tr key={item._id} className="admin-table__row">
