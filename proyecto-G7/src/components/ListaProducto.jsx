@@ -4,54 +4,58 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const ListaProducto = () => {
-  const { itemId, items, getAllItems, deleteItem, setId } = useItems();
-    const navigate = useNavigate()
+  const { items, getAllItems, deleteItem, setId } = useItems();
+  const navigate = useNavigate();
+
+  const refresh = async () => {
+    await getAllItems();
+  };
 
   useEffect(() => {
-    const refresh = async () => {
-      await getAllItems();
-    };
     refresh();
-    if ((items.lenth == 0)) {
+    if (items.lenth == 0) {
       return "Aún no hay nada aquí.";
-    };
+    }
   }, []);
 
   const handleDelete = (id) => {
-      deleteItem(id);
+    deleteItem(id);
   };
 
   const handleUpdate = (id) => {
-    navigate(`/update/${id}`)
+    navigate(`/update/${id}`);
   };
 
   //Si no hay items, solo muestra ese mensaje, no cargues la tabla.
-  if (items.length == 0) return (
+  return items.length == 0 ? (
     <>
       <div className="title row">
         <h1>LISTADO DE PRODUCTOS</h1>
         <div>
-        <h2>Aún no hay items.</h2>
+          <h2>Aún no hay items.</h2>
         </div>
         <div className="agregar">
           {
-            <Link className="fa-solid fa-plus" to="/create">
-              Añadir Item
+            <Link to="/create">
+              AGREGAR
+              <img src="../../public/images/icons/agregar.svg" alt="AGREGAR" />
             </Link>
           }
         </div>
       </div>
     </>
-  );
-  return (
+  ) : (
     <>
       <div className="lista-producto">
         <div className="title">
           <h1>LISTADO DE PRODUCTOS</h1>
           <div className="agregar">
             {
-              <Link className="fa-solid fa-plus" to="/create">
-                Añadir Item
+              <Link to="/create">
+                <img
+                  src="../../public/images/icons/agregar.svg"
+                  alt="AGREGAR"
+                />
               </Link>
             }
           </div>
@@ -68,18 +72,28 @@ const ListaProducto = () => {
               <th>img</th>
             </tr>
           </thead>
-          <tbody>
-            {items.map((item) => (
+          <tbody key="Items table">
+            {Object.values(items).map((item) => (
               <tr key={item._id}>
-                <th scope="row">{item._id}</th>
+                <th key={item._id} scope="row">{item._id}</th>
                 <td>{item.sku}</td>
                 <td>{item.name}</td>
                 <td>{item.category}</td>
                 <td>
-                  <button onClick={()=>handleUpdate(item._id)} className="btn btn-warning">Update</button>
+                  <button
+                    onClick={() => handleUpdate(item._id)}
+                    className="btn btn-warning"
+                  >
+                    Update
+                  </button>
                 </td>
                 <td>
-                  <button onClick={()=>handleDelete(item._id)} className="btn btn-danger">Delete</button>
+                  <button
+                    onClick={() => handleDelete(item._id)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </button>
                 </td>
                 <td>
                   <img src={item.img_back} alt="img_back" />

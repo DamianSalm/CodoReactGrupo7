@@ -34,7 +34,7 @@ export const useItems = () => {
 
 export const ItemsProvider = ({ children }) => {
   const [itemId, setItemId] = useState("");
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(Array());
   // const [categories, setCategories] = useState("Funko", "Remera");
   // const [licences, setLicences] = useState(["Star Wars", "Pokemon"]);
 

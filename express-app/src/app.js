@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import itemRoutes from "./routes/item.routes.js";
 import cors from "cors";
+import multer from "multer";
+import path from "path";
 
 const app = express();
 
@@ -14,10 +16,15 @@ app.use(
   })
 );
 app.use(morgan("dev"));
+app.use(multer({ dest: "./src/public/img/uploads" }).single("image"));
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.static("public"));
 
 app.use("/api", authRoutes);
 app.use("/api/items", itemRoutes);
+app.use((req, res) => {
+  res.status(404).json({ status: false, errors: "Not found" });
+});
 
 export default app;

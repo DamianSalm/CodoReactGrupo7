@@ -6,7 +6,8 @@ import { useItems } from "../context/ItemsContext";
 import { useAuth } from "../context/AuthContext";
 
 const EditComp = () => {
-  const { itemId, items, categories, licences, updateItem, getOneItem } = useItems();
+  const { itemId, items, categories, licences, updateItem, getOneItem } =
+    useItems();
   const { errors: registerErrors } = useAuth();
 
   const {
@@ -21,17 +22,16 @@ const EditComp = () => {
 
   useEffect(() => {
     const loadItem = async (id) => {
-    if (params.id){
+      if (params.id) {
         const res = await getOneItem(params.id);
-    }
       }
-      loadItem()
-    // console.log(errors);
+    };
+    loadItem();
   }, []);
 
   const onSubmit = handleSubmit((values) => {
     updateItem(params.id, values);
-    navigate('/admin')
+    navigate("/admin");
   });
 
   return (
@@ -64,20 +64,25 @@ const EditComp = () => {
           </div>
           <div className="col-3">
             <label className="col-form-label">Categoria:</label>
-            <select className="form-select col-3"
+            <select
+              className="form-select col-3"
               defaultValue={items.category}
-              {...register("category")}>
+              {...register("category")}
+            >
               <option>Funko</option>
               <option>Remera</option>
             </select>
           </div>
           <div className="col-3">
             <label className="col-form-label">Licencia:</label>
-            <select className="form-select"
+            <select
+              className="form-select"
               defaultValue={items.licence}
-              {...register("licence")}>
-              <option>Seleccionar</option>
-              <option value="">1</option>
+              {...register("licence")}
+            >
+              <option>Pokemon</option>
+              <option>StarWars</option>
+              <option>Digimon</option>
             </select>
           </div>
         </div>
@@ -107,7 +112,7 @@ const EditComp = () => {
               className="form-control"
               placeholder="Precio"
               defaultValue={items.price}
-              {...register("price", {valueAsNumber: true})}
+              {...register("price", { valueAsNumber: true })}
             />
           </div>
           <div className="col-3">
@@ -117,7 +122,7 @@ const EditComp = () => {
               className="form-control"
               placeholder="Stock"
               defaultValue={items.stock}
-              {...register("stock", {valueAsNumber: true})}
+              {...register("stock", { valueAsNumber: true })}
             />
           </div>
         </div>
@@ -129,7 +134,7 @@ const EditComp = () => {
               className="form-control"
               placeholder="Descuento"
               defaultValue={items.discount}
-              {...register("discount", {valueAsNumber: true})}
+              {...register("discount", { valueAsNumber: true })}
             />
           </div>
           <div className="col-3">
@@ -148,8 +153,14 @@ const EditComp = () => {
           <input type="file" name="" id="" className="form-control" placeholder="Imagen delantera" {...register("img_front")}/> */}
           </div>
         </div>
-        <button type="submit" className="btn btn-danger m-1">
+        <button type="submit" className="btn btn-success m-1">
           Editar
+        </button>
+        <button type="reset" className="btn btn-warning">
+          Reset
+        </button>
+        <button type="cancel" className="btn btn-info m-1">
+          Cancelar
         </button>
       </form>
     </div>

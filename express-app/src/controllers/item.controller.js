@@ -1,7 +1,7 @@
 import Item from "../models/item.model.js";
+import multer from 'multer';
 
 export const getAll = async (req, res) => {
-  console.log("getting all");
   try {
     const items = await Item.find();
     res.json(items);
@@ -24,9 +24,25 @@ export const getOne = async (req, res) => {
 };
 
 export const postOne = async (req, res) => {
-  console.log("posting one");
+  console.log(req.body);
+  console.log(req.files);
+  console.log(req.file)
+
+  
   try {
-    const { iid, sku, name, description, category, licence, price, stock, discout, dues } = req.body;
+    const {
+      iid,
+      sku,
+      name,
+      description,
+      category,
+      licence,
+      price,
+      stock,
+      discout,
+      dues,
+    } = req.body;
+
     const newItem = new Item({
       iid,
       name,
@@ -39,8 +55,9 @@ export const postOne = async (req, res) => {
       discout,
       dues,
     });
+
     const savedItem = await newItem.save();
-     res.json(savedItem);
+    return res.status(200).json(savedItem);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -67,5 +84,3 @@ export const deleteOne = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
-

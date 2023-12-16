@@ -1,5 +1,5 @@
-import { Decimal128 } from "mongodb";
 import mongoose from "mongoose";
+import * as fs from 'fs'
 
 const itemSchema = new mongoose.Schema({
   iid: {
@@ -22,12 +22,10 @@ const itemSchema = new mongoose.Schema({
     type: String,
   },
   img_front: {
-    data: Buffer,
-    contentType: String
+    type: String,
 },
   img_back: {
-    data: Buffer,
-    contentType: String
+    type: String,
 },
   category: {
     type: String,
