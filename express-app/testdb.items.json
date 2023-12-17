@@ -1,0 +1,92 @@
+[{
+  "_id": {
+    "$oid": "657eb300ebbf2f611b457127"
+  },
+  "iid": "1",
+  "sku": "SKU00001",
+  "name": "Eren titan",
+  "description": "Personaje de undertale",
+  "img_front": "1702802176464.jpg",
+  "category": "Anime",
+  "licence": "Ni idea",
+  "price": 12000,
+  "stock": 500,
+  "discout": 4,
+  "dues": "2",
+  "createdAt": {
+    "$date": "2023-12-17T08:36:16.467Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-17T08:36:16.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "657eb346ebbf2f611b45712b"
+  },
+  "iid": "2",
+  "sku": "SKU00002",
+  "name": "Messi",
+  "description": "Messi seleccion Argentina",
+  "img_front": "1702802246577.jpg",
+  "category": "Futbol",
+  "licence": "AFA",
+  "price": 1200000,
+  "stock": 50000,
+  "discout": 4,
+  "dues": "2",
+  "createdAt": {
+    "$date": "2023-12-17T08:37:26.580Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-17T08:37:26.580Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "657eb36febbf2f611b45712d"
+  },
+  "iid": "3",
+  "sku": "SKU00003",
+  "name": "Chuky",
+  "description": "Messi seleccion Argentina",
+  "img_front": "1702802287203.jpg",
+  "category": "Terror",
+  "licence": "ni idea",
+  "price": 120,
+  "stock": 50,
+  "discout": 1,
+  "dues": "2",
+  "createdAt": {
+    "$date": "2023-12-17T08:38:07.206Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-17T08:38:07.206Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "657eb390ebbf2f611b45712f"
+  },
+  "iid": "4",
+  "sku": "SKU00004",
+  "name": "Ni idea",
+  "description": "Ni idea",
+  "img_front": "1702802320565.jpg",
+  "category": "Terror",
+  "licence": "ni idea",
+  "price": 1213,
+  "stock": 10,
+  "discout": 12,
+  "dues": "21",
+  "createdAt": {
+    "$date": "2023-12-17T08:38:40.568Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-17T08:38:40.568Z"
+  },
+  "__v": 0
+}]
