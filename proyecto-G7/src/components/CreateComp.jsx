@@ -29,19 +29,12 @@ const CreateComp = () => {
           <div className="form__box--flex">
             <div className="col">
               <label className="form__label" htmlFor="category">Categoria:</label>
-              <select className="form__select" id="category" {...register("category")}>
-                <option value="funko">Funko</option>
-                <option value="remera">Remera</option>
-              </select>
+              <input className="form__input" id="category" {...register("category")} />
             </div>
           </div>
           <div className="form__box--flex">
             <label className="form__label" htmlFor="licence">Licencia:</label>
-            <select className="form__select" id="licence"{...register("licence")}>
-              <option value="pokemon">Pokemon</option>
-              <option value="star wars">StarWars</option>
-              <option value="digimon">Digimon</option>
-            </select>
+            <input className="form__input" id="licence"{...register("licence")} />
           </div>
       </div>
       <div className="form__box--flex">
@@ -93,31 +86,7 @@ const CreateComp = () => {
               
             </div>
           </div>
-        </div>
-        <div className="form__flex">
-          <div className="form__box--flex">
-            <label className="form__label" htmlFor="discount">Descuento:</label>
-            <div className="form__input--wrapper">
-              <input type="number"
-               className="form__input"
-                id="discount"
-                 placeholder="descuento"
-                  {...register("discount", {valueAsNumber: true})} /><span>%</span>
-            </div>
-            <div className="form__box--flex">
-                <label className="form__label" htmlFor="dues">Cuotas:</label>
-                <select className="form__select" name="dues" id="dues">
-                    <option value="0">Sin cuotas</option>
-                    <option value="3">3 cuotas s/ interés</option>
-                    <option value="6">6 cuotas s/ interés</option>
-                    <option value="9">9 cuotas s/ interés</option>
-                    <option value="12">12 cuotas s/ interés</option>
-                    <option value="18">18 cuotas s/ interés</option>
-                    <option value="24">24 cuotas s/ interés</option>
-                </select>
-            </div>
-          </div>
-        </div>         
+        </div>      
         <div className="form__flex">
           <button type="submit" className="form__btn btn btn--primary btn--large">
             Agregar Producto

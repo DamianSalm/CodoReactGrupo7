@@ -53,16 +53,13 @@ const LoginComp = () => {
         {errors.password && <p>Password is required</p>}
 
         <div className="form__submission">
-                    <input className="form__btn btn btn--primary btn--large" type="submit" value="Ingresar"/>
-                    <div className="form__remember">
-                        <input type="checkbox" name="remember" title="recordarme" id=""/>
-                        <label htmlFor="">Recordarme</label>
-                    </div>
-                </div>
+            <input className="form__btn btn btn--primary btn--large" type="submit" value="Ingresar"/>
+
+            No tienes cuenta? <Link to="/register" className="form__link" >Registrate!</Link>
+
+        </div>
       </form>
-      <p className="form">
-        No tienes cuenta? <Link to="/register" className="form__link" >Registrate!</Link>
-      </p>
+
     </div>
   );
 };

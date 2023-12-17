@@ -1,6 +1,4 @@
 import { useItems } from "../context/ItemsContext";
-import { Link } from "react-router-dom";
-import { Filter } from "../components/FilterComponent/Filter"
 import { useEffect } from "react";
 
 const ShopPage = () => {
@@ -16,8 +14,6 @@ const ShopPage = () => {
       }, []);
   return (
       <main className='container' id='shop'>
-          <Filter/>
-
           <section className="shop__content">
               <ul className="shop__items">
                   {
@@ -25,19 +21,15 @@ const ShopPage = () => {
                           return (
                           <li className="shop__item" key={item.iid}>
                               <article className='card-item'>
-                                  <Link className='card-item__link'>
                                       <picture className="card-item__cover">
-                                          <span className="card-item__tag">nombre?</span>
-                                          <img src={`./img/${item.image_front}`} alt={`Figura coleccionable Funko de un ${item.name}`} />
-                                          <img src={`./img/${item.image_back}`} alt={`Figura coleccionable Funko de un ${item.name} en caja`} />
-                                      </picture>
+                                          <span className="card-item__tag">{item.name}</span>
+                                          <img src={"/images/problemas.jpg"} alt={`Figura coleccionable Funko de un ${item.name}`} />
+                                        </picture>
                                       <div>
                                           <p className="card-item__">{item.licence}</p>
                                           <h4 className="card-item__name">{item.name}</h4>
-                                          <p className="card-item__price">{item.price}</p>
-                                          <p className="card-item__promo"></p>
+                                          <p className="card-item__price">${item.price}</p>
                                       </div>
-                                  </Link>
                               </article>
                           </li>)
                       })

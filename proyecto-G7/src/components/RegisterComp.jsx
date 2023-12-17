@@ -73,14 +73,9 @@ const RegisterComp = () => {
 
         <div class="form__submission">
             <input className="form__btn btn btn--primary btn--large" type="submit" value="Registrar"/>
-            <div className="form__terms">
-                <input type="checkbox" name="" id="" title="Acepto"/>
-                <label htmlFor="">Acepto <a className="form__link" href="">Términos y Condiciones</a></label>
-            </div>
         </div>
       </form>
       <br />
-      <p className="form__terms">Ya tienes cuenta? <Link to="/login">Log in!</Link></p>
     </div>
   );
 };

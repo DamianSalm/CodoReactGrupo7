@@ -14,6 +14,7 @@
 }
 
 .card-item__cover img {
+    width: 200px;
     animation: fade .7s;
 }
 

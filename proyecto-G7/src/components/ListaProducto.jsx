@@ -52,9 +52,7 @@ const ListaProducto = () => {
         <div className="admin__header">
           <h1>LISTADO DE PRODUCTOS</h1>
             {
-              <Link className="fa-solid fa-plus btn--primary btn--medium" to="/create">
-                Añadir Item
-              </Link>
+              <Link className="fa-solid fa-plus btn--primary btn--large" to="/create"/>
             }
         </div>
         {items.length == 0 ? (<h3>No hay items</h3>) : (
@@ -77,10 +75,14 @@ const ListaProducto = () => {
                 <td key="item_name">{item.name}</td>
                 <td key="item_cat">{item.category}</td>
                 <td key="item_upd_button">
-                  <button onClick={()=> handleUpdate(item._id)} className="btn--update">Update</button>
+                  <button onClick={()=> handleUpdate(item._id)} className="btn--update btn--medium">
+                    <i className="fa-solid fa-edit"></i>
+                  </button>
                 </td>
                 <td key="item_del_button">
-                  <button onClick={()=> confirmDelete(item._id)} className="btn--primary">Delete</button>
+                  <button onClick={()=> confirmDelete(item._id)} className="btn--primary btn--medium">
+                    <i className="fa-solid fa-trash"></i>
+                  </button>
                 </td>
 
               </tr>

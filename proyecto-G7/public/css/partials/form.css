@@ -2,12 +2,9 @@
 
 textarea {
     width: 100%;
+    font-size: 2em;
 }
 
-textarea::placeholder {
-    padding: var(--spacing-8);
-    color: gainsboro;
-}
 
 .form__box--grid {
     display: grid;

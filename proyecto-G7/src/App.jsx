@@ -12,7 +12,6 @@ import LoginComp from "./components/LoginComp";
 import LogoutComp from "./components/LogoutComp";
 import CreateComp from "./components/CreateComp";
 import EditComp from "./components/EditComp";
-import ItemPage from "./pages/ItemPage";
 import { AuthProvider } from "./context/AuthContext"; //contexto para usuarios autorizados/no autorizados
 import { ItemsProvider } from "./context/ItemsContext"; //contexto para estados y efectos generales de items
 import ProtectedRoute from "./context/ProtectedRoute"; //componente protector de rutas // accede al estado del authcontext para validar el estado de validación de un usuario
@@ -28,7 +27,6 @@ function App() {
             {/* PUBLIC ROUTES */}
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
-            <Route path="/item" element={<ItemPage />} />
             <Route path="/register" element={<RegisterComp />} />
             <Route path="/login" element={<LoginComp />} />
             {/* AUTH ROUTES */}

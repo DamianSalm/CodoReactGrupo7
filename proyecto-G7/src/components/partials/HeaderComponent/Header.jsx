@@ -48,12 +48,6 @@ const Header = () => {
               </li>
             </>
           )}
-
-          <li className="navbar__item">
-            <Link to="/cart" className="navbar__cart">
-              <img src={"/images/icons/cart-icon.svg"} alt="icono de carrito" />
-            </Link>
-          </li>
         </ul>
       </nav>
     </header>

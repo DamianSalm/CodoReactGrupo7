@@ -41,33 +41,13 @@ const EditComp = () => {
       <form className="create__form" onSubmit={onSubmit}>
         <div className="form__flex">
           <div className="form__box--flex">
-            <label className="form__label" htmlFor="category">
-              Categoria:
-            </label>
-            <select
-              className="form__select"
-              id="category"
-              defaultValue={items.category}
-              {...register("category")}
-            >
-              <option>Funko</option>
-              <option>Remera</option>
-            </select>
+            <label className="form__label" htmlFor="category">Categoria:</label>
+            <input className="form__input" id="category" defaultValue={items.category} {...register("category")} />
           </div>
           <div className="form__box--flex">
-            <label className="form__label" htmlFor="licence">
-              Licencia:
-            </label>
-            <select
-              className="form__select"
-              id="licence"
-              defaultValue={items.licence}
-              {...register("licence")}
-            >
-              <option>Pokemon</option>
-              <option>StarWars</option>
-              <option>Digimon</option>
-            </select>
+            <label className="form__label" htmlFor="licence">Licencia:</label>
+            <input className="form__input" id="licence" defaultValue={items.licence} {...register("licence")}/>
+
           </div>
         </div>
         <div className="form__box--flex">
@@ -80,8 +60,7 @@ const EditComp = () => {
             className="form__input"
             placeholder="Nombre del producto"
             defaultValue={items.name}
-            {...register("name", { required: true })}
-          />
+            {...register("name", { required: true })} />
         </div>
         <div>
           <textarea
@@ -136,71 +115,7 @@ const EditComp = () => {
           </div>
         </div>
         <div className="form__flex">
-          <div className="form__box--flex">
-            <label className="form__label" htmlFor="discount">
-              Descuento:
-            </label>
-            <div className="form__input--wrapper">
-              <input
-                type="number"
-                id="discount"
-                className="form__input"
-                placeholder="Descuento"
-                defaultValue={items.discount}
-                {...register("discount", { valueAsNumber: true })}
-              />
-              <span>%</span>
-            </div>
-          </div>
-          <div className="form__box--flex">
-            <label className="form__label" htmlFor="dues">
-              Cuotas:
-            </label>
-            <select
-              type="number"
-              id="dues"
-              className="form__select"
-              placeholder="Cuotas"
-              defaultValue={items.cuotas}
-              {...register("cuotas")}
-            >
-              <option defaultValue={"Seleccionar"}>Seleccionar</option>
-              <option value="0">Sin cuotas</option>
-              <option value="3">3 cuotas s/ interés</option>
-              <option value="6">6 cuotas s/ interés</option>
-              <option value="9">9 cuotas s/ interés</option>
-              <option value="12">12 cuotas s/ interés</option>
-              <option value="18">18 cuotas s/ interés</option>
-              <option value="24">24 cuotas s/ interés</option>
-            </select>
-          </div>
-        </div>
-        {/*
-        <div className="form__box--flex">
-            <input 
-            type="file" 
-            name="" 
-            id=""
-            className="form__input" 
-            placeholder="Imagen trasera" 
-            {...register("img_back")}
-          />
-          <input 
-            type="file" 
-            name="" 
-            id="" 
-            className="form__input" 
-            placeholder="Imagen delantera" 
-            {...register("img_front")}
-          />
-          </div>
-        */}
-
-        <div className="form__flex">
-          <button
-            type="submit"
-            className="form__btn btn btn--primary btn--large"
-          >
+          <button type="submit" className="form__btn btn btn--primary btn--large" >
             Editar Producto
           </button>
         </div>
