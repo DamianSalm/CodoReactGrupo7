@@ -6,13 +6,11 @@ export const createItemSchema = z.object({
   name: z.string({required_error: "Name is required"}),
   description: z.string().optional(),
   img_front: z.string().optional(),
-  // img_back: z.object().optional(),
+
   category: z.string().optional(),
   licence: z.string().optional(),
   price: z.number().int().optional(),
   stock: z.number().int().optional(),
-  discout: z.number().int().optional(),
-  dues: z.string().optional(),
 })
 
 export const updateItemSchema = z.object({
@@ -26,7 +24,5 @@ export const updateItemSchema = z.object({
   licence: z.string().optional(),
   price: z.number().int().optional(),
   stock: z.number().int().optional(),
-  discout: z.number().int().optional(),
-  dues: z.string().optional(),
 })
 
