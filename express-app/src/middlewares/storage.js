@@ -10,10 +10,6 @@ const storage = multer.diskStorage({
   }
 })
 
-const upload = multer({storage:storage})
-
-export const uploadImg = mulimport multer from "multer"
-
 const guardar = multer.diskStorage({
     destination: (req,file,cb) => {
         cb(null, "./public/uploads")
@@ -25,7 +21,6 @@ const guardar = multer.diskStorage({
         }
     } 
 })
-
 const filtro = (req,file,cb) => {
     if(file && (file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg' || file.mimetype === 'image/png')){
         cb(null,true)
@@ -33,4 +28,6 @@ const filtro = (req,file,cb) => {
         cb(null,false)
     }
 }
-export const subirImagen = 
+
+export const uploadImg = multer({storage:storage})
+export const subirImagen = multer({storage: guardar, fileFilter:filtro})
