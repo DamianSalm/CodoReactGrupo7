@@ -24,10 +24,6 @@ export const getOne = async (req, res) => {
 };
 
 export const postOne = async (req, res) => {
-  console.log(req.body);
-  console.log(req.files);
-  console.log(req.file)
-
   
   try {
     const {
@@ -36,6 +32,7 @@ export const postOne = async (req, res) => {
       name,
       description,
       category,
+      //img_front,
       licence,
       price,
       stock,
@@ -48,6 +45,7 @@ export const postOne = async (req, res) => {
       name,
       description,
       category,
+      //img_front: req.file.filename,
       licence,
       sku,
       price,

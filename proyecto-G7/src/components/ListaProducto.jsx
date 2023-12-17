@@ -46,23 +46,7 @@ const ListaProducto = () => {
   };
 
   //Si no hay items, solo muestra ese mensaje, no cargues la tabla.
-  return items.length == 0 ? (
-    <>
-      <div className="title row">
-        <h1>LISTADO DE PRODUCTOS</h1>
-        <div>
-          <h2>Aún no hay items.</h2>
-        </div>
-        <div className="agregar">
-          {
-            <Link className="fa-solid fa-plus btn--primary btn--medium" to="/create">
-              Añadir Item
-            </Link>
-          }
-        </div>
-      </div>
-    </>
-  ) : (
+  return  (
     <div id="admin" className="container">
       <section className="admin__list">
         <div className="admin__header">
@@ -73,6 +57,7 @@ const ListaProducto = () => {
               </Link>
             }
         </div>
+        {items.length == 0 ? (<h3>No hay items</h3>) : (
         <table className="admin-table">
             <thead>
               <tr className="admin-table__header">
@@ -102,7 +87,7 @@ const ListaProducto = () => {
             ))}
           </tbody>
         </table>
-      </section>
+        )}</section>
     </div>
   );
 };

@@ -1,18 +1,8 @@
 import multer from 'multer';
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '/public/img/uploads')
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, file.fieldname + '-' + uniqueSuffix)
-  }
-})
-
-const guardar = multer.diskStorage({
     destination: (req,file,cb) => {
-        cb(null, "./public/uploads")
+        cb(null, "public/")
     },
     filename: (req,file,cb) =>{
         if(file !== null){
@@ -29,5 +19,4 @@ const filtro = (req,file,cb) => {
     }
 }
 
-export const uploadImg = multer({storage:storage})
-export const subirImagen = multer({storage: guardar, fileFilter:filtro})
+export const upload = multer({storage:storage, fileFilter: filtro})

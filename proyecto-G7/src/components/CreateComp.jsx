@@ -16,7 +16,6 @@ const CreateComp = () => {
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit((values) => {
-    console.log(values);
     createItem(values);
     navigate(`/admin`);
   });
@@ -118,26 +117,7 @@ const CreateComp = () => {
                 </select>
             </div>
           </div>
-        </div>
-        {/*
-        <div className="form__box--flex">
-          <label className="form__label" htmlFor="images">Imagenes:</label>
-          <input
-            type="file"
-            name="img_back"
-            className="form__input"
-            placeholder="Imagen trasera"
-            {...register("img_back")}
-          />
-          <input
-            type="file"
-            name="img_front"
-            className="form__input"
-            placeholder="Imagen delantera"
-            {...register("img_front")}
-          /> 
-        </div>
-        */}
+        </div>         
         <div className="form__flex">
           <button type="submit" className="form__btn btn btn--primary btn--large">
             Agregar Producto
