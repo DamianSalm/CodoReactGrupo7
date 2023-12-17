@@ -9,7 +9,7 @@ const router = Router();
 
 router.get('/', getAll)
 router.get('/:id', getOne)
-router.post('/', tokenRequired, validateSchema(createItemSchema), upload.single('image'), postOne)
+router.post('/', tokenRequired, validateSchema(createItemSchema), /*upload.single('image'),*/ postOne)
 router.put('/:id', tokenRequired, validateSchema(updateItemSchema), putOne)
 router.delete('/:id', tokenRequired, deleteOne)
 
