@@ -1,8 +1,13 @@
 import './Filter.css'
 
 export const Filter = () => {
+
+
+    const handleFilter = () => {}
+
     return (
         <aside className="shop__filters filters">
+            <form action="">
             <div className="filters__search">
                 <label className="filters__title" htmlFor="search">BUSCAR</label>
                 <input type="text" name="search" id="search" placeholder="item o categoría"/>
@@ -17,7 +22,7 @@ export const Filter = () => {
                 </select>
             </div>
             <div className="filters__price">
-                <span className="filters__title" >PRECIO</span>
+                <span className="filters__title">PRECIO</span>
                 <div>
                     <label htmlFor="min">MIN</label>
                     <input type="text" name="min" id="min" placeholder="0"/>
@@ -44,6 +49,7 @@ export const Filter = () => {
                             <label htmlFor="">FAVORITOS</label>
                     </div>
                 </div>
+                </form>
         </aside>
     )
 }

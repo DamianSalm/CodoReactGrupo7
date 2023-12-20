@@ -19,6 +19,7 @@ const LoginComp = () => {
   });
   //useEffect - useNav
   const navigate = useNavigate();
+
   useEffect(() => {
     if (isAuth) navigate("/admin");
   }, [isAuth]);
@@ -30,11 +31,16 @@ const LoginComp = () => {
       {signErrors.map((error, i) => (
         <div key={i}>{error}</div>
       ))}
-      <form onSubmit={onSubmit} className="login__form">
+      <form onSubmit={onSubmit} className="login__form" name="login_form">
         <div className="form__box--grid">
-          <label className="form__label" htmlFor="email">Email: </label>
+          <label className="form__label" htmlFor="email">
+            Email:{" "}
+          </label>
           <input
-            type="email"          
+            autoComplete="email"
+            id='email'
+            name="email"
+            type="email"
             placeholder="Email"
             className="form__input"
             {...register("email", { required: true })}
@@ -42,8 +48,13 @@ const LoginComp = () => {
         </div>
         {errors.email && <p>email is required</p>}
         <div className="form__box--grid">
-          <label className="form__label" htmlFor="password">Password: </label>
+          <label className="form__label" htmlFor="password">
+            Password:{" "}
+          </label>
           <input
+            autoComplete="current-password"
+            id='password'
+            name="password"
             type="password"
             placeholder="Password"
             className="form__input"
@@ -53,15 +64,27 @@ const LoginComp = () => {
         {errors.password && <p>Password is required</p>}
 
         <div className="form__submission">
-                    <input className="form__btn btn btn--primary btn--large" type="submit" value="Ingresar"/>
-                    <div className="form__remember">
-                        <input type="checkbox" name="remember" title="recordarme" id=""/>
-                        <label htmlFor="">Recordarme</label>
-                    </div>
-                </div>
+          <input
+            className="form__btn btn btn--primary btn--large"
+            type="submit"
+            value="Ingresar"
+          />
+          <div className="form__remember">
+            <input
+              type="checkbox"
+              name="remember"
+              title="recordarme"
+              id="remember"
+            />
+            <label htmlFor="remember">Recordarme</label>
+          </div>
+        </div>
       </form>
       <p className="form">
-        No tienes cuenta? <Link to="/register" className="form__link" >Registrate!</Link>
+        No tienes cuenta?{" "}
+        <Link to="/register" className="form__link">
+          Registrate!
+        </Link>
       </p>
     </div>
   );

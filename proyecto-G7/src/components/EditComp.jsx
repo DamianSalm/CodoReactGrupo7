@@ -5,7 +5,7 @@ import { useItems } from "../context/ItemsContext";
 import { useAuth } from "../context/AuthContext";
 
 const EditComp = () => {
-  const { itemId, items, categories, licences, updateItem, getOneItem } =
+  const { items, updateItem, getOneItem } =
     useItems();
   const { errors: registerErrors } = useAuth();
 
@@ -50,8 +50,8 @@ const EditComp = () => {
               defaultValue={items.category}
               {...register("category")}
             >
-              <option>Funko</option>
-              <option>Remera</option>
+              <option value="Funko">Funko</option>
+              <option value="Remera">Remera</option>
             </select>
           </div>
           <div className="form__box--flex">
@@ -64,9 +64,9 @@ const EditComp = () => {
               defaultValue={items.licence}
               {...register("licence")}
             >
-              <option>Pokemon</option>
-              <option>StarWars</option>
-              <option>Digimon</option>
+              <option value="Pokemon">Pokemon</option>
+              <option value="Star wars">StarWars</option>
+              <option value="Digimon">Digimon</option>
             </select>
           </div>
         </div>

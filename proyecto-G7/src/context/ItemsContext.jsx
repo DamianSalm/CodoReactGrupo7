@@ -35,6 +35,8 @@ export const useItems = () => {
 export const ItemsProvider = ({ children }) => {
   const [itemId, setItemId] = useState("");
   const [items, setItems] = useState(Array());
+  const [filtered, setFiltered] = useState(Array());
+
   // const [categories, setCategories] = useState("Funko", "Remera");
   // const [licences, setLicences] = useState(["Star Wars", "Pokemon"]);
 
@@ -47,6 +49,17 @@ export const ItemsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  // FilterById === getOneItem
+
+  const filterAZ = async () => {
+
+  }
+
+  const filterByPrice = async () => {
+
+  }
+  
 
   // -(?)- llamarGetOne
   const getOneItem = async (id) => {
@@ -66,7 +79,7 @@ export const ItemsProvider = ({ children }) => {
   const createItem = async (values) => {
     try {
       const res = await llamarPostOne(values);
-      //setItems(res.data);
+      // setItems(res.data);
       // if (res) { setItems(res.data) }
     } catch (err) {
       console.log(err);

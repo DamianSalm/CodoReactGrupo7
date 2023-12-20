@@ -8,15 +8,15 @@
 }
 
 .create__title {
-    font-size: var(--font-jumbo);
+    font-size: var(--font-xlarge);
 }
 
 .create__form {
     max-width: 990px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
+    justify-content: start;
+    align-items: normal;
     gap: var(--spacing-48);
 }
 

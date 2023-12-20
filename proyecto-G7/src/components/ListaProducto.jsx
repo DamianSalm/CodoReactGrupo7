@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
-const mySwal = withReactContent(Swal)
 
 const ListaProducto = () => {
   const { items, getAllItems, deleteItem } = useItems();
@@ -26,17 +25,17 @@ const ListaProducto = () => {
   const confirmDelete = (id) => {
     Swal.fire({
       title: "Deseas eliminar este producto?",
-      text: "No podes revertir esto",
+      text: "No puedes revertir esto",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, quiero eliminar",
+      confirmButtonText: "Si, eliminar",
 
     }).then((result) => {
       if(result.isConfirmed){
         handleDelete(id)
-        Swal.fire("Borrado", "Tu Documento ha sido eliminado", "success")
+        Swal.fire("Borrado", "El producto ha sido eliminado", "success")
       }
     })
   }
@@ -63,6 +62,7 @@ const ListaProducto = () => {
       </div>
     </>
   ) : (
+    // caso contrario...
     <div id="admin" className="container">
       <section className="admin__list">
         <div className="admin__header">
@@ -74,20 +74,20 @@ const ListaProducto = () => {
             }
         </div>
         <table className="admin-table">
-            <thead>
-              <tr className="admin-table__header">
+            <thead key="table_head">
+              <tr key="table_headers" className="admin-table__header">
               <th>ID</th>
               <th>Sku</th>
               <th>Nombre del producto</th>
               <th>Categoría</th>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
+              <th></th>
+              <th></th>
             </tr>
             </thead>
-          <tbody>
+          <tbody key="body">
             {Object.values(items).map((item) => (
-              <tr key={item._id} className="admin-table__row">
-                <th key="item_id">{item.iid}</th>
+              <tr key={item.iid} className="admin-table__row">
+                <td key="item_id">{item.iid}</td>
                 <td key="item_sku">{item.sku}</td>
                 <td key="item_name">{item.name}</td>
                 <td key="item_cat">{item.category}</td>

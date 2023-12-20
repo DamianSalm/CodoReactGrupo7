@@ -1,5 +1,4 @@
 import Item from "../models/item.model.js";
-import multer from 'multer';
 
 export const getAll = async (req, res) => {
   try {
@@ -24,11 +23,12 @@ export const getOne = async (req, res) => {
 };
 
 export const postOne = async (req, res) => {
-  console.log(req.body);
-  console.log(req.files);
-  console.log(req.file)
+  console.log("req.body: ", req.body);
+  console.log("req: ", req);
+  console.log("req.headers: ", req.headers);
+  console.log('req.files: ', req.files);
+  console.log('req.file: ', req.file);
 
-  
   try {
     const {
       iid,

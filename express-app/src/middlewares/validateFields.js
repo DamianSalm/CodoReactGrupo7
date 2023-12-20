@@ -1,6 +1,9 @@
 export const validateSchema = (schema) => (req, res, next) => {
   console.log("validando esquema");
   try {
+    console.log("headers: ", req.headers);
+    console.log("body: ", req.body);
+    console.log("files: ", req.files);
     schema.parse(req.body);
     console.log("schema validado");
     next();

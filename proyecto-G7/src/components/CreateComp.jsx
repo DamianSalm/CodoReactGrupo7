@@ -18,37 +18,39 @@ const CreateComp = () => {
   const onSubmit = handleSubmit((values) => {
     console.log(values);
     createItem(values);
-    navigate(`/admin`);
+    // navigate(`/admin`);
   });
 
 
   return (
     <div id="create" className="container">
       <h1 className="create__title">CREAR NUEVO ITEM</h1>
-      <form className="create__form" onSubmit={onSubmit}>
+      <form className="create__form" action="" method="post" encType="multipart/form-data" onSubmit={onSubmit}>
       <div className="form__flex">
           <div className="form__box--flex">
             <div className="col">
               <label className="form__label" htmlFor="category">Categoria:</label>
               <select className="form__select" id="category" {...register("category")}>
-                <option value="funko">Funko</option>
-                <option value="remera">Remera</option>
+                <option value="Funko">Funko</option>
+                <option value="Remera">Remera</option>
               </select>
             </div>
           </div>
           <div className="form__box--flex">
             <label className="form__label" htmlFor="licence">Licencia:</label>
             <select className="form__select" id="licence"{...register("licence")}>
-              <option value="pokemon">Pokemon</option>
-              <option value="star wars">StarWars</option>
-              <option value="digimon">Digimon</option>
+              <option value="Pokemon">Pokemon</option>
+              <option value="Star wars">StarWars</option>
+              <option value="Digimon">Digimon</option>
             </select>
           </div>
       </div>
       <div className="form__box--flex">
           <label className="form__label" htmlFor="name">Nombre del producto:</label>
           <input
-            type="text" id="name"
+            autoComplete="true"
+            type="text"
+            id="name"
             className="form__input"
             placeholder="Nombre del producto"
             {...register("name", { required: {value:true, message:"Este campo es requerido"}, minLength: {value:4, message:"Mínimo 4 caracteres"} })}
@@ -57,6 +59,7 @@ const CreateComp = () => {
           {/* {errors.name && <span style="display: block; color: tomato; font-size: x-small">{errors.name.message}</span>} */}
       <div>
           <textarea
+            id="descripcion"
             placeholder="Descripcion del producto"
             cols="30" rows="10"
             {...register("description")}
@@ -65,8 +68,9 @@ const CreateComp = () => {
       
         <div className="form__box--flex">
           <div className="col-3">
-            <label className="form__label">iid:</label>
+            <label className="form__label" htmlFor="iid">iid:</label>
             <input
+              id="iid"
               name="iid"
               type="text"
               className="form__input"
@@ -100,10 +104,10 @@ const CreateComp = () => {
             <label className="form__label" htmlFor="discount">Descuento:</label>
             <div className="form__input--wrapper">
               <input type="number"
-               className="form__input"
+                className="form__input"
                 id="discount"
-                 placeholder="descuento"
-                  {...register("discount", {valueAsNumber: true})} /><span>%</span>
+                placeholder="descuento"
+                {...register("discount", {valueAsNumber: true})} /><span>%</span>
             </div>
             <div className="form__box--flex">
                 <label className="form__label" htmlFor="dues">Cuotas:</label>
@@ -119,25 +123,27 @@ const CreateComp = () => {
             </div>
           </div>
         </div>
-        {/*
+        
         <div className="form__box--flex">
-          <label className="form__label" htmlFor="images">Imagenes:</label>
+          <label className="images">Imagenes:</label>
           <input
+            id="images"
             type="file"
-            name="img_back"
+            name="images"
             className="form__input"
             placeholder="Imagen trasera"
-            {...register("img_back")}
+            {...register("images")}
           />
-          <input
+          {/* <input
+            id="images"
             type="file"
-            name="img_front"
+            name="images"
             className="form__input"
             placeholder="Imagen delantera"
-            {...register("img_front")}
-          /> 
+            {...register("images")}
+          />  */}
         </div>
-        */}
+       
         <div className="form__flex">
           <button type="submit" className="form__btn btn btn--primary btn--large">
             Agregar Producto

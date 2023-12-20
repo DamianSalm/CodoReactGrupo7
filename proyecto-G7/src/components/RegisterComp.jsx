@@ -32,7 +32,7 @@ const RegisterComp = () => {
           ))
       }
       <form onSubmit={onSubmit} className="register__form">
-        <div class="form__box--grid">
+        <div className="form__box--grid">
           <label  className="form__label" htmlFor="name">Nombre: </label>
             <input
               type="text"
